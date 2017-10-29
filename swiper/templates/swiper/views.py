@@ -14,16 +14,3 @@ def index(request):
         'index.html',
         context={},
     )
-
-def profile(request):
-    """
-    View function for profile page of each user.
-    """
-    # Available books (status = 'a')
-
-    # Render the HTML template index.html with the data in the context variable
-    return render(
-        request,
-        'profile.html',
-        context={},
-    )
