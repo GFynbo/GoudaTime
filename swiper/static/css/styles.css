@@ -40,7 +40,7 @@ a.btn {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #FE4365;
+  background-color: #ED203B;
   border-radius: 3px;
   box-shadow: 0 0 0 -2px #CFF09E, 0 0 0 -1px #FE4365;
   border: none;
@@ -57,11 +57,11 @@ a.btn:hover, a.btn:focus {
 }
 
 a.btn-secondary {
-  background: #C8C8A9;
-  box-shadow: 0 0 0 -2px #CFF09E, 0 0 0 -1px #C8C8A9;
+  background: #5ABA55;
+  box-shadow: 0 0 0 -2px #CFF09E, 0 0 0 -1px #5ABA59;
 }
 a.btn-secondary:hover {
-  box-shadow: 0 0 0 2px #CFF09E, 0 0 0 4px #bebe99;
+  box-shadow: 0 0 0 2px #CFF09E, 0 0 0 4px #5ABA59;
 }
 
 a.btn:active,
