@@ -1,14 +1,14 @@
 /* $Base */
 body {
   margine: 0 auto;
-  padding-top: 60px;
+  padding-top: 20px;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   font-size: 22px;
   font-size: 1.375rem;
   font-weight: 500;
   color: #333;
-  background-color: #ffffff;
+  background-color: #ff4747;
 }
 
 h1 {
@@ -29,9 +29,9 @@ a.btn {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #5ABA55;
+  background-color: #ED203B;
   border-radius: 3px;
-  box-shadow: 0 0 0 -2px #ffffff, 0 0 0 -1px #5ABA59;
+  box-shadow: 0 0 0 -2px #ffffff, 0 0 0 -1px #FE4365;
   border: none;
   height: 45px;
   width: 100px;
@@ -40,7 +40,7 @@ a.btn {
   transition: box-shadow .3s;
 }
 a.btn:hover, a.btn:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #5ABA55;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #FE4365;
   -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
   transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
   -webkit-animation: gelatine 0.5s 1;
@@ -48,11 +48,11 @@ a.btn:hover, a.btn:focus {
 }
 
 a.btn-secondary {
-  background: #ED203B;
-  box-shadow: 0 0 0 -2px #ffffff, 0 0 0 -1px #FE4365;
+  background: #5ABA55;
+  box-shadow: 0 0 0 -2px #ffffff, 0 0 0 -1px #5ABA59;
 }
 a.btn-secondary:hover {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #FE4365;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #5ABA55;
 }
 
 a.btn:active,
@@ -149,4 +149,13 @@ a.btn-secondary:active {
   margin: 0 auto;
   float: none;
   width: 100%;
+}
+
+.card-img-top {
+  background-image: url("../img/rest.jpg");
+  height: 700px;
+  width:87rem;
+  background-size: cover;
+  text-align: center;
+  font-weight: lighter;
 }
