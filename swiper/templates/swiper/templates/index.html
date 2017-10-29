@@ -2,24 +2,21 @@
 
 {% block title %} Home{% endblock %}
 
-
+{% load static %}
 {% block content %}
     <h1>You Gouda?</h1>
     <div class="card-group swiper-row">
-      <div class="card swiper-card" style="width: 70rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card swiper-card" style="width: 90rem;">
+        <img class="card-img-top" src="{% static 'img/rest.jpg' %}" alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text"> My Favorite Resturant</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <li class="list-group-item">Hours | Location | Menu</li>
         </ul>
         <div class="card-body">
-          <a class="btn" href="#">Yum!</a>
-          <a class="btn btn-secondary" href="#">Eww</a>
+          <a class="btn" href="#">Eww</a>
+          <a class="btn btn-secondary" href="#">Yum!</a>
         </div>
       </div>
     </div>
