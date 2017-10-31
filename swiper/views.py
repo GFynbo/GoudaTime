@@ -7,7 +7,6 @@ def index(request):
     """
     View function for home page of site.
     """
-    # Available books (status = 'a')
 
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -16,15 +15,27 @@ def index(request):
         context={'restaurants_list': Restaurant.objects.all()},
     )
 
+@login_required
 def profile(request):
     """
     View function for profile page of each user.
     """
-    # Available books (status = 'a')
 
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
         'profile.html',
+        context={},
+    )
+
+def about(request):
+    """
+    View function for about page of GoudaTime.
+    """
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(
+        request,
+        'about.html',
         context={},
     )

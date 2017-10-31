@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Profile{% endblock %}
+{% block title %} {{ user.username }}{% endblock %}
 
 {% block content %}
 
@@ -14,12 +14,18 @@
     {% endif %}
 {% endif %}
 
-<h1>{{ user.username }}</h1>
-<div class="card-group swiper-row">
-    <h2>Good to see you, {{ user.first_name }}!</h2>
-    <h3>First Name: {{ user.first_name }}</h3>
-    <h3>Last Name: {{ user.last_name }}</h3>
-    <h3>Email: {{ user.email }}</h3>
+<div class="container container-full">
+    <div class="row">
+        <h1>{{ user.username }}</h1>
+    </div>
+    <div class="row">
+        <div class="card-group swiper-row">
+            <h2>Good to see you, {{ user.first_name }}!</h2>
+            <h3>First Name: {{ user.first_name }}</h3>
+            <h3>Last Name: {{ user.last_name }}</h3>
+            <h3>Email: {{ user.email }}</h3>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
