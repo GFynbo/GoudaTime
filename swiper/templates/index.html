@@ -9,9 +9,8 @@
         {% if restaurants_list %}
             {% for restaurant in restaurants_list %}
                 <div class="card swiper-card" style="width: 90rem;">
-                    {% for picture in pictures_list %}
-                        <img class="card-img-top" src="{{ picture.image }}" alt="Card image cap">
-                        <p>{{ picture.image }}</p>
+                    {% for picture in restaurant.pictures.all %}
+                        <img class="card-img-top" src="/{{ picture.image }}" alt="{{ picture.name }}">
                     {% endfor %}
                   <div class="card-body">
                     <p class="card-text"> {{ restaurant.name }}</p>

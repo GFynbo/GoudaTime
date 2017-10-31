@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.files.storage import Storage
@@ -8,7 +9,7 @@ class Picture(models.Model):
     Model to hold multiple pictures for a restaurant.
     """
     name = models.CharField(max_length=100, help_text="Enter the picture name (e.g. Seating Area, or Kitchen)")
-    image = models.ImageField(upload_to = 'images/', default = 'images/None/no-img.jpg')
+    image = models.ImageField(upload_to = 'swiper/static/img/' + str(datetime.utcnow()), default = 'swiper/static/img/no-img.png')
 
     def __str__(self):
         """

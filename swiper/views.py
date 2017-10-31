@@ -13,7 +13,7 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'restaurants_list': Restaurant.objects.all(), , "pictures_list": [{"restaurants_list": restaurants_list.name} for Picture in restaurants_list.pictures.all()]} for restaurant in restaurants_list]},
+        context={'restaurants_list': Restaurant.objects.all()},
     )
 
 def profile(request):
