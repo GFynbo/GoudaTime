@@ -5,46 +5,62 @@
 {% load static %}
 {% block content %}
 
-<div class="container container-full">
+<div class="container container-full container-about">
     <div class="row">
         <h1>GoudaTime</h1>
     </div>
     <div class="row">
         <h2>Who are we?</h2>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card hovercard">
-                <div class="cardheader">
-                </div>
-                <div class="avatar">
-                    <img alt="" src="/swiper/static/img/gavin.jpg">
-                </div>
-                <div class="info">
-                    <div class="title">
-                        <a target="_blank" href="https://gavinfynbo.com">Gavin Fynbo</a>
+        <div class="col-centered">
+            <div class="col-md-4">
+                <div class="card-about">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar-about">
+                        <img src="/swiper/static/img/gavin.jpg" alt="" />
                     </div>
-                    <div class="desc">Passionate designer</div>
-                    <div class="desc">Curious developer</div>
-                    <div class="desc">Tech geek</div>
+                    <div class="content">
+                        <h3 class="card-about-h3">Gavin Fynbo</h3>
+                        <p>
+                           I am a Junior studying Computer Science at Boston University.
+                           I a compusive tinkerer and fun enthusiast, I love writing software and making it available
+                           to the world and people. I also love skiing and hanging out and playing video games
+                           with my friends!</p>
+                        <p><button type="button" class="btn btn-default">Contact</button></p>
+                    </div>
                 </div>
-                <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/wasabiwhite">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher"
-                    href="https://plus.google.com/+ahmshahnuralam">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm" rel="publisher"
-                    href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
-                    </a>
+            </div>
+            <div class="col-md-4">
+                <div class="card-about">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar-about">
+                        <img src="/swiper/static/img/tatiana.jpg" alt="" />
+                    </div>
+                    <div class="content">
+                        <h3 class="card-about-h3">Tatiana Diaz-Gallegos</h3>
+                        <p>I am a professional lover of cute dogs! Additionally, I
+                           am a Senior studying Computer Engineering at Boston University
+                           and love exploring new programming languages and creating
+                           projects that improve people's lives.</p>
+                        <p><button type="button" class="btn btn-default">Contact</button></p>
+                    </div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-about">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar-about">
+                        <img src="/swiper/static/img/jio.jpg" alt="" />
+                    </div>
+                    <div class="content">
+                        <h3 class="card-about-h3">Jio Jung</h3>
+                        <p>My name is Jio and I am a Senior studying Computer Science at
+                           Boston University. I love working on bots and am a Supreme addict,
+                           I also love hanging out with my friends and playing video games.</p>
+                        <p><button type="button" class="btn btn-default">Contact</button></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
     </div>
     <div class="row">
         <h2>Why did we make this?</h2>
