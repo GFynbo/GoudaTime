@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from .models import Restaurant
 
 @login_required
 def index(request):
@@ -12,7 +13,7 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={},
+        context={'restaurants_list': Restaurant.objects.all(), , "pictures_list": [{"restaurants_list": restaurants_list.name} for Picture in restaurants_list.pictures.all()]} for restaurant in restaurants_list]},
     )
 
 def profile(request):

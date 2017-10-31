@@ -6,19 +6,30 @@
 {% block content %}
     <h1>You Gouda?</h1>
     <div class="card-group swiper-row">
-      <div class="card swiper-card" style="width: 90rem;">
-        <img class="card-img-top" src="{% static 'img/rest.jpg' %}" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text"> My Favorite Resturant</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Hours | Location | Menu</li>
-        </ul>
-        <div class="card-body">
-          <a class="btn" href="#">Eww</a>
-          <a class="btn btn-secondary" href="#">Yum!</a>
-        </div>
-      </div>
+        {% if restaurants_list %}
+            {% for restaurant in restaurants_list %}
+                <div class="card swiper-card" style="width: 90rem;">
+                    {% for picture in pictures_list %}
+                        <img class="card-img-top" src="{{ picture.image }}" alt="Card image cap">
+                        <p>{{ picture.image }}</p>
+                    {% endfor %}
+                  <div class="card-body">
+                    <p class="card-text"> {{ restaurant.name }}</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ restaurant.hours }}</li>
+                    <li class="list-group-item">{{ restaurant.address }}</li>
+                    <li class="list-group-item">{{ restaurant.description }}</li>
+                  </ul>
+                  <div class="card-body">
+                    <a class="btn" href="#">Eww</a>
+                    <a class="btn btn-secondary" href="#">Yum!</a>
+                  </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No restaurants are available.</p>
+        {% endif %}
     </div>
 
 

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %} Profile{% endblock %}
+
+{% block content %}
+
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<h1>{{ user.username }}</h1>
+<div class="card-group swiper-row">
+    <h2>Good to see you, {{ user.first_name }}!</h2>
+    <h3>First Name: {{ user.first_name }}</h3>
+    <h3>Last Name: {{ user.last_name }}</h3>
+    <h3>Email: {{ user.email }}</h3>
+</div>
+
+{% endblock %}
