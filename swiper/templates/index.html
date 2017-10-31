@@ -4,11 +4,11 @@
 
 {% load static %}
 {% block content %}
-    <h1>You Gouda?</h1>
+    <h2>Find a Gouda restaurant...</h2>
     <div class="card-group swiper-row">
         {% if restaurants_list %}
             {% for restaurant in restaurants_list %}
-                <div class="card swiper-card" style="width: 90rem;">
+                <div class="card swiper-card">
                     {% for picture in restaurant.pictures.all %}
                         <img class="card-img-top" src="/{{ picture.image }}" alt="{{ picture.name }}">
                     {% endfor %}

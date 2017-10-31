@@ -34,8 +34,10 @@
                 </div>
                 <ul class="nav navbar-nav">
                     {% if user.is_authenticated %}
+                    <li class="profile"><a href="/swiper/">Home</a></li>
                     <li class="profile"><a href="/swiper/profile/">Profile</a></li>
-                    <li ><a href="#resturaunt" >Resturaunts Chosen</a></li>
+                    <li ><a href="#resturaunt" >Matches</a></li>
+                    <li ><a href="#resturaunt" >Personal Favorites</a></li>
                     <li><a href="/accounts/logout">Logout</a></li>
                     {% endif %}
                     <li><a href="/swiper/about">About</a></li>
@@ -67,9 +69,9 @@
         </div>
     </div>
 
-    <div class="footer navbar-fixed-bottom">
+    <div class="footer">
         <footer>
-            <p>&copy; 2017 GoudaTime, Inc. | Built with ❤️ by Gavin, Tatiana and Jio</p>
+            &copy; 2017 GoudaTime, Inc. | Built with ❤️ by Gavin, Tatiana and Jio
         </footer>
     </div> <!-- /container -->
 <!-- Bootstrap core JavaScript

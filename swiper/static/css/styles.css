@@ -161,7 +161,7 @@ a.btn-secondary-swiper:active {
   padding: 15px;
   border-radius: 8px;
   border: 1px solid black;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   float: none;
 }
@@ -182,8 +182,7 @@ a.btn-secondary-swiper:active {
 
 .card-img-top {
   background-image: url("../img/rest.jpg");
-  height: 700px;
-  width:87rem;
+  width: 95%;
   background-size: cover;
   text-align: center;
   font-weight: lighter;
@@ -192,8 +191,9 @@ a.btn-secondary-swiper:active {
 .footer {
     background-color: #202020;
     color: white;
-    padding-top: 7px;
+    padding-bottom: 15px;
 }
+
 
 /* styles for the login/register page */
 .login-please {
@@ -347,8 +347,8 @@ ABOUT
 }
 
 .card-about .avatar-about img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -359,4 +359,14 @@ ABOUT
     padding: 3px;
     border: 2px solid white;
     margin: 30px;
+}
+
+.about-cols {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 18px;
+}
+
+.about-cols-p {
+    text-align: left;
 }
