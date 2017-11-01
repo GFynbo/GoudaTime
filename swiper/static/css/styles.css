@@ -370,3 +370,20 @@ ABOUT
 .about-cols-p {
     text-align: left;
 }
+
+
+/*
+*****************
+PROFILE
+*****************
+*/
+
+.profile-pic {
+    margin-top: 50px;
+    width: 250px;
+    height: 250px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid white;
+}
