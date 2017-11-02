@@ -7,8 +7,9 @@ body {
   font-size: 22px;
   font-size: 1.375rem;
   font-weight: 500;
-  color: #333;
-  background-color: #ff4747;
+  color: #000;
+  background-color: #202020;
+  min-height: 100vh;
 }
 
 h1 {
@@ -18,8 +19,23 @@ h1 {
   text-shadow: 1px 1px 0 #f2f2f2, 2px 2px 0 #f2f2f2;
 }
 
+/*
+*******************
+NAVIGATION
+*******************
+*/
+
+.navbar-gouda {
+    background-color: #124B52;
+    border-bottom: 1px solid #096673;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
 /* $Buttom */
-a.btn {
+a.btn-swiper {
   display: inline-block;
   margin: 15px 15px 0;
   padding: .6em 1.1em;
@@ -39,7 +55,7 @@ a.btn {
   -webkit-transition: box-shadow .3s;
   transition: box-shadow .3s;
 }
-a.btn:hover, a.btn:focus {
+a.btn-swiper:hover, a.btn-swiper:focus {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #FE4365;
   -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
   transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
@@ -47,20 +63,25 @@ a.btn:hover, a.btn:focus {
   animation: gelatine 0.5s 1;
 }
 
-a.btn-secondary {
+a.btn-secondary-swiper {
   background: #5ABA55;
   box-shadow: 0 0 0 -2px #ffffff, 0 0 0 -1px #5ABA59;
 }
-a.btn-secondary:hover {
+a.btn-secondary-swiper:hover {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #5ABA55;
 }
 
-a.btn:active,
-a.btn-secondary:active {
+a.btn-swiper:active,
+a.btn-secondary-swiper:active {
   background: #4ECDC4;
   -webkit-transition-duration: 0;
   transition-duration: 0;
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #3ac7bd;
+}
+
+.navbar-thicc {
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 /**
@@ -136,13 +157,14 @@ a.btn-secondary:active {
 }
 
 .swiper-card {
-  background-color: white;
+  background: linear-gradient(to top right, #fff, #eee);
   padding: 15px;
-  border-radius: 8px;
-  border: 1px solid black;
-  width: 100%;
+  border-radius: 3px;
+  /*border: 1px solid black;*/
+  width: 50%;
   margin: 0 auto;
   float: none;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .swiper-row {
@@ -151,11 +173,228 @@ a.btn-secondary:active {
   width: 100%;
 }
 
+.card-img-swiper {
+    border-radius: 5px;
+    border: 1px solid #124B52;
+}
+
+.jumbotron {
+    background-color: white;
+}
+
+.jumbotron h1, .jumbotron .h1 {
+    color: #000;
+}
+
 .card-img-top {
   background-image: url("../img/rest.jpg");
-  height: 700px;
-  width:87rem;
+  width: 100%;
   background-size: cover;
   text-align: center;
   font-weight: lighter;
+}
+
+.list-group-swiper {
+    background: linear-gradient(to top left, #124B52, #096673);
+    color: #fff;
+}
+
+.footer {
+    background-color: #202020;
+    color: white;
+    padding-bottom: 15px;
+}
+
+
+/* styles for the login/register page */
+.login-please {
+    padding-bottom: 20px;
+}
+.container-full {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.row-full {
+    flex: 1;
+}
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+
+
+/*
+****************
+ABOUT
+****************
+*/
+
+.src-image {
+  display: none;
+}
+
+.card-about {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0;
+  background-color: #096673;
+  color: #eee;
+  margin-top: 20px;
+  padding: 3px;
+}
+
+.card-about .header-bg {
+  /* This stretches the canvas across the entire hero unit */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px #FFF solid;
+  /* This positions the canvas under the text */
+  z-index: 1;
+}
+.card-about .avatar-about {
+  position: relative;
+  margin-top: 15px;
+  z-index: 100;
+}
+
+.card-about .avatar-about img {
+  width: 150px;
+  height: 150px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.card-about-h3 {
+    padding: 3px;
+    border: 2px solid white;
+    margin: 30px;
+}
+
+.about-cols {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    margin-bottom: 18px;
+}
+
+.about-cols-p {
+    text-align: left;
+}
+
+
+/*
+*****************
+PROFILE
+*****************
+*/
+
+.profile-pic {
+    margin-top: 50px;
+    width: 250px;
+    height: 250px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid white;
 }

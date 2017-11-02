@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %} About{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<div class="container container-full container-about">
+    <div class="row">
+        <h1>GoudaTime</h1>
+    </div>
+    <div class="row">
+        <h2>Who are we?</h2>
+        <div class="col-centered">
+            <div class="col-md-4">
+                <div class="card-about">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar-about">
+                        <img src="/swiper/static/img/gavin.jpg" alt="Gavin Fynbo headshot." />
+                    </div>
+                    <div class="content">
+                        <h3 class="card-about-h3">Gavin Fynbo</h3>
+                        <p>
+                           I am a Junior studying Computer Science at Boston University.
+                           I a compusive tinkerer and fun enthusiast, I love writing software and making it available
+                           to the world and people. I also love skiing and hanging out and playing video games
+                           with my friends!</p>
+                        <p><button type="button" class="btn btn-default">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-about">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar-about">
+                        <img src="/swiper/static/img/tatiana.jpg" alt="Tatiana Diaz-Gallegos headshot." />
+                    </div>
+                    <div class="content">
+                        <h3 class="card-about-h3">Tatiana Diaz-Gallegos</h3>
+                        <p>I am a professional lover of cute dogs! Additionally, I
+                           am a Senior studying Computer Engineering at Boston University
+                           and love exploring new programming languages and creating
+                           projects that improve people's lives.</p>
+                        <p><button type="button" class="btn btn-default">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-about">
+                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                    <div class="avatar-about">
+                        <img src="/swiper/static/img/jio.jpg" alt="Jio in an alley." />
+                    </div>
+                    <div class="content">
+                        <h3 class="card-about-h3">Jio Jung</h3>
+                        <p>My name is Jio and I am a Senior studying Computer Science at
+                           Boston University. I love working on bots and am a Supreme addict,
+                           I also love hanging out with my friends and playing video games.</p>
+                        <p><button type="button" class="btn btn-default">Contact</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2>Why did we make this?</h2>
+        <div class="col-centered">
+            <div class="col-md-4">
+                <h3 class="about-cols">Solving a problem</h3>
+                <p class="about-cols-p">Part of our reasoning for creating a service for finding restaurants was to solve an
+                age old problem: agreeing on dinner. What we mean is that every couple, group of friends,
+                or family has had the argument about where to eat tonight. </p>
+                <p class="about-cols-p">We set out to solve this issue
+                by creating a service that allows people to join a group and only be matched with a
+                restaurant if eevryone agrees, thus allowing unity and no argument.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="about-cols">Ease of use</h3>
+                <p class="about-cols-p">Everyone knows how Tinder works and the simple swipe left or swipe right mechanism.
+                We tried to replicate this simplicity and allow users to apply it to an every day problem such as dinner.</p>
+                <p class="about-cols-p">It is not limited to dinner, but is also applicable to all meals. By allowing users
+                to just log in and form their group and immediately go to looking for food, they can decide on dinner while
+                they're walking back from class or while on the train home from work.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="about-cols">Fun</h3>
+                <p class="about-cols-p">Obviously, one of the main reasons we set out to finish this projects was to have fun.
+                This project started as an idea from a hackathon and has bloomed into a full blown service for the average person
+                to take advantage. We want everyone to have fun.</p>
+                <p class="about-cols-p">This is a free, open source project written by the lovely developers mentioned above
+                and welcomes outsiders for contributions or suggestions. Please just refer to our <a href="https://github.com/GFynbo/GoudaTime">GitHub page</a>.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
