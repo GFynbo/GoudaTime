@@ -157,19 +157,25 @@ a.btn-secondary-swiper:active {
 }
 
 .swiper-card {
-  background-color: white;
+  background: linear-gradient(to top right, #fff, #eee);
   padding: 15px;
-  border-radius: 8px;
-  border: 1px solid black;
+  border-radius: 3px;
+  /*border: 1px solid black;*/
   width: 50%;
   margin: 0 auto;
   float: none;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .swiper-row {
   margin: 0 auto;
   float: none;
   width: 100%;
+}
+
+.card-img-swiper {
+    border-radius: 5px;
+    border: 1px solid #124B52;
 }
 
 .jumbotron {
@@ -182,10 +188,15 @@ a.btn-secondary-swiper:active {
 
 .card-img-top {
   background-image: url("../img/rest.jpg");
-  width: 95%;
+  width: 100%;
   background-size: cover;
   text-align: center;
   font-weight: lighter;
+}
+
+.list-group-swiper {
+    background: linear-gradient(to top left, #124B52, #096673);
+    color: #fff;
 }
 
 .footer {

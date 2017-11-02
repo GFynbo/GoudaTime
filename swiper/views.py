@@ -12,7 +12,7 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'restaurants_list': Restaurant.objects.all()},
+        context={'restaurant': Restaurant.objects.all()[0]},
     )
 
 @login_required
