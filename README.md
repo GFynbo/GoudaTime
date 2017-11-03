@@ -1,4 +1,4 @@
-# GoudaTime &middot; [![Available on Test Pilot](https://img.shields.io/badge/available_on-Test_Pilot-0996F8.svg)](https://goudatime.com/)
+# GoudaTime &middot; [![Available on Test Pilot](https://img.shields.io/badge/available_on-Test_Pilot-0996F8.svg)](https://goudatime.com/)[![CircleCI](https://circleci.com/gh/GFynbo/GoudaTime/tree/master.svg?style=svg)](https://circleci.com/gh/GFynbo/GoudaTime/tree/master)
 
 GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and your friends to join a virtual party and vote yes or no on restaurants near you. If the entire party votes yes on any restaurant it will show up under your list of matches with information pertaining to the restaurant. We're here to make sure you all get something you want to eat!
 
