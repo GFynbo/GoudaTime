@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Add Match{% endblock %}
+
+{% block content %}
+
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<div class="container container-full">
+    <div class="row">
+        <img class="profile-pic" src="/{{ user.profile.profile_pic }}" alt="" />
+        <h1>Your Matches</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            {% if user.matches %}
+                {% for restaurant in user.matches.all %}
+                    <h2>{{ restaurant.name }}</h2>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -28,6 +28,32 @@ def profile(request):
         context={},
     )
 
+@login_required
+def matches(request):
+    """
+    View function for matches page of each user to display matched restaurants
+    """
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(
+        request,
+        'matches.html',
+        context={},
+    )
+
+@login_required
+def add_match(request):
+    """
+    View function for adding a match to a user
+    """
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(
+        request,
+        'add_match.html',
+        context={},
+    )
+
 def about(request):
     """
     View function for about page of GoudaTime.

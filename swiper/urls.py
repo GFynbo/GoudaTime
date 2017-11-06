@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^profile/', views.profile, name="Profile"),
     url(r'^about/', views.about, name="About"),
+    url(r'^matches/', views.matches, name="Matches"),
+    url(r'^(?P<restaurant_name>\d+)/', views.add_match, name="Add Match"),
 ]
