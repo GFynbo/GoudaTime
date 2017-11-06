@@ -24,6 +24,7 @@
             {% if user.matches %}
                 {% for restaurant in user.matches.all %}
                     <h2>{{ restaurant.name }}</h2>
+                    <img src="{{ restaurant.name }}" />
                 {% endfor %}
             {% endif %}
         </div>
