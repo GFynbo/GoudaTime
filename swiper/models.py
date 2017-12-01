@@ -51,6 +51,8 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     matches = models.ManyToManyField(Restaurant, help_text="List of matches for each user to a restaurant.")
+    current_location_x = models.DecimalField(max_digits=9, decimal_places=6, default=42.3601)
+    current_location_y = models.DecimalField(max_digits=9, decimal_places=6, default=71.0589)
 
     def add_restaurant_to_matches(self, restaurant):
         ''' add a selected restaurant to the user '''
