@@ -22,12 +22,11 @@ def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
+            raw_password = form.cleaned_data.get('password')
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('index')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -80,5 +79,17 @@ def about(request):
     return render(
         request,
         'about.html',
+        context={},
+    )
+
+def thank_you(request):
+    """
+    View function for thank you page of GoudaTime.
+    """
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(
+        request,
+        'registration/thank_you.html',
         context={},
     )

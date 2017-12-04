@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^matches/', views.matches, name="Matches"),
     url(r'^(?P<restaurant_name>\d+)/', views.add_match, name="Add Match"),
     url(r'^signup/$', views.signup, name='Signup'),
+    url(r'^thank-you/$', views.thank_you, name='Thank You'),
 ]

@@ -21,10 +21,10 @@
     </div>
     <div class="row">
         <div class="card-group swiper-row">
-            <h2>Good to see you, {{ user.first_name }}!</h2>
-            <h3>First Name: {{ user.first_name }}</h3>
-            <h3>Last Name: {{ user.last_name }}</h3>
-            <h3>Email: {{ user.email }}</h3>
+            <h2>Good to see you, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!</h2>
+            <h3>First Name:  {% if user.first_name %}{{ user.first_name }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
+            <h3>Last Name: {% if user.last_name %}{{ user.last_name }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
+            <h3>Email: {% if user.email %}{{ user.email }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
         </div>
     </div>
 </div>
