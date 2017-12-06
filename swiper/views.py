@@ -25,8 +25,6 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.refresh_from_db()  # load the profile instance created by the signal
-            user.profile.birth_date = form.cleaned_data.get('birth_date')
             user.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('index')

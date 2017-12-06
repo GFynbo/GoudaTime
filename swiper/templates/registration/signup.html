@@ -47,8 +47,8 @@ $(function() {
 								<form id="login-form" action="" method="post" role="form" style="display: block;">
                                     {% csrf_token %}
 									<div class="form-group">
-                                        <label>Username (must be unique)</label>
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" maxlength="150" autofocus="" required="">
+                                        <label>Email</label>
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="john@doe.com" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" maxlength="150" autofocus="" required="">
                                         {% for error in form.username.errors %}
                                           <p style="color: red">{{ error }}</p>
                                         {% endfor %}
@@ -64,34 +64,6 @@ $(function() {
                                         <label>Repeat Password</label>
 										<input type="password" name="password2" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" maxlength="150" autofocus="" required="">
                                         {% for error in form.password2.errors %}
-                                          <p style="color: red">{{ error }}</p>
-                                        {% endfor %}
-									</div>
-                                    <div class="form-group">
-                                        <label>First Name</label>
-										<input type="text" name="first_name" id="first_name" tabindex="1" class="form-control" placeholder="John" value="" maxlength="150" autofocus="" required="">
-                                        {% for error in form.first_name.errors %}
-                                          <p style="color: red">{{ error }}</p>
-                                        {% endfor %}
-									</div>
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-										<input type="text" name="first_name" id="last_name" tabindex="1" class="form-control" placeholder="Doe" value="" maxlength="150" autofocus="" required="">
-                                        {% for error in form.last_name.errors %}
-                                          <p style="color: red">{{ error }}</p>
-                                        {% endfor %}
-									</div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-                                        {% for error in form.email.errors %}
-                                          <p style="color: red">{{ error }}</p>
-                                        {% endfor %}
-									</div>
-                                    <div class="form-group">
-                                        <label>Birth Date</label>
-										<input type="date" name="birth_date" id="birth_date" tabindex="1" class="form-control" placeholder="YYYY-MM-DD" value="">
-                                        {% for error in form.birth_date.errors %}
                                           <p style="color: red">{{ error }}</p>
                                         {% endfor %}
 									</div>
