@@ -8,10 +8,18 @@ from django.shortcuts import render, redirect
 from swiper.forms import SignUpForm
 
 @login_required
-def index(request):
+def index(request, username):
     """
     View function for home page of site.
     """
+
+    if request.method == 'POST':
+        form = AddRestaurantForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return redirect('index')
+    else:
+        form = AddRestaurantForm()
 
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -21,11 +29,11 @@ def index(request):
     )
 
 def signup(request):
+    """ the page for registration on GoudaTime """
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('index')
     else:
