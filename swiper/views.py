@@ -5,10 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from swiper.forms import SignUpForm
+from swiper.forms import SignUpForm, AddRestaurantForm
 
 @login_required
-def index(request, username):
+def index(request):
     """
     View function for home page of site.
     """
@@ -16,7 +16,7 @@ def index(request, username):
     if request.method == 'POST':
         form = AddRestaurantForm(request.POST)
         if form.is_valid():
-            user = form.save()
+
             return redirect('index')
     else:
         form = AddRestaurantForm()

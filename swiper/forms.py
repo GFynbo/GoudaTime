@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from models import Profile
+from swiper.models import Profile
 
 class SignUpForm(UserCreationForm):
 
@@ -10,10 +10,8 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'password1', 'password2', )
 
 class AddRestaurantForm(forms.ModelForm):
+    restaurant_name = forms.CharField(max_length=100, help_text="Enter the restaurant name (e.g. Santarpio's or Jimmy's Subs)")
+
     class Meta:
         model = Profile
-
-    def __init__(self, *args, **kwargs):
-        current_restaurant = kwargs.pop('restaurant')
-        super(AddRestaurantForm, self).__init__(*args, **kwargs)
-        self.fields['matches'] = current_user
+        fields = ('matches', )
