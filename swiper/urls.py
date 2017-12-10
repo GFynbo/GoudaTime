@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^(?P<restaurant_name>\d+)/', views.add_match, name="Add Match"),
     url(r'^signup/$', views.signup, name='Signup'),
     url(r'^thank-you/$', views.thank_you, name='Thank You'),
+    url(r'^restaurants/(?P<restaurant_id>[0-9a-f-]+)', views.show_restaurant, name="Restaurant"),
 ]

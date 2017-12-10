@@ -400,3 +400,13 @@ PROFILE
     border-radius: 50%;
     border: 5px solid white;
 }
+
+/*
+*****************
+RESTAURANT PAGE
+*****************
+*/
+
+.restaurant-display-info {
+    text-align: left;
+}

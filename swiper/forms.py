@@ -11,9 +11,6 @@ class SignUpForm(UserCreationForm):
 
 class AddRestaurantForm(forms.ModelForm):
     name = "test name"
-
-    #r = Restaurant(restaurant_name=name)
-
     class Meta:
         model = Profile
         fields = ('matches', )

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} {{ restaurant.name }}{% endblock %}
+
+{% block content %}
+
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<div class="container container-full">
+    <div class="row">
+        {% for picture in restaurant.pictures.all %}
+        <img class="card-img-top card-img-swiper" src="/{{ picture.image }}" alt="{{ picture.name }}">
+        {% endfor %}
+        <h1>{{ restaurant.name }}</h1>
+    </div>
+    <div class="row">
+        <div class="row restaurant-display-info">
+            <p class=""><b>Hours:</b> {{ restaurant.hours }}</p>
+            <p class=""><b>Location:</b> {{ restaurant.address }}</p>
+            <p class=""><b>Description:</b> {{ restaurant.description }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

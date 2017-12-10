@@ -3,7 +3,7 @@ from .models import Restaurant
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 
 from swiper.forms import SignUpForm, AddRestaurantForm
 
@@ -16,17 +16,43 @@ def index(request):
     if request.method == 'POST':
         form = AddRestaurantForm(request.POST)
         if form.is_valid():
-
+            new_restaurant = Restaurant(name=form.cleaned_data['name'])
+            user.matches.add()
             return redirect('index')
     else:
         form = AddRestaurantForm()
+
+    if Restaurant.objects.all():
+        current_restaurant = Restaurant.objects.all()[0]
+    else:
+        current_restaurant = None
 
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
         'index.html',
-        context={'restaurant': Restaurant.objects.all()[0]},
+        context={'restaurant': current_restaurant},
     )
+
+@login_required
+def add_restaurant(request, restaurant):
+    """ function to add the restaurant to current user"""
+    user.matches.add()
+    pass
+
+@login_required
+def show_restaurant(request, restaurant_id):
+    """ display specific restaurant from uuid """
+    try:
+        restaurant = get_object_or_404(Restaurant, id=restaurant_id)
+        # Render the HTML template index.html with the data in the context variable
+        return render(
+            request,
+            'restaurant.html',
+            context={'restaurant': restaurant},
+        )
+    except ValueError:
+        raise Http404
 
 def signup(request):
     """ the page for registration on GoudaTime """
