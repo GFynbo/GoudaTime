@@ -22,7 +22,7 @@
         <div class="card-body">
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="restaurant-id" value="{{ restaurant.id }}">
+                <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
                 <button class="btn-swiper" value="deny" name="Submit">Eww</button>
                 <button class="btn-swiper btn-secondary-swiper" value="approve" name="Submit">Yum!</button>
             </form>

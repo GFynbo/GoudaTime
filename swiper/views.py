@@ -3,9 +3,11 @@ from .models import Restaurant
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 
 from swiper.forms import SignUpForm, AddRestaurantForm
+from swiper.models import Profile
 
 @login_required
 def index(request):
@@ -17,16 +19,19 @@ def index(request):
         form = AddRestaurantForm(request.POST)
         if form.is_valid():
             user = request.user
-            user.profile.matches.add(Restaurant.objects.filter(pk=form.cleaned_data['restaurant-id']))
+            user.profile.add_match(Restaurant.objects.filter(form.cleaned_data["restaurant_id"]))
             user.save()
             return redirect('index')
+        if Restaurant.objects.all():
+            current_restaurant = Restaurant.objects.all()[0]
+        else:
+            current_restaurant = None
     else:
         form = AddRestaurantForm()
-
-    if Restaurant.objects.all():
-        current_restaurant = Restaurant.objects.all()[0]
-    else:
-        current_restaurant = None
+        if Restaurant.objects.all():
+            current_restaurant = Restaurant.objects.all()[0]
+        else:
+            current_restaurant = None
 
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -58,13 +63,15 @@ def show_restaurant(request, restaurant_id):
 def signup(request):
     """ the page for registration on GoudaTime """
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            user.refresh_from_db()  # load the profile instance created by the signal
+            user.save()
+            login(request, user)
             return redirect('index')
     else:
-        form = SignUpForm()
+        form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
 
 @login_required

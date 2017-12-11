@@ -11,15 +11,14 @@ class SignUpForm(UserCreationForm):
 
 class AddRestaurantForm(forms.ModelForm):
     # The restaurant key for adding the model instance later
-    restaurant = forms.CharField(
-        max_length=36,
+    restaurant_id = forms.UUIDField(
         required=True,
         help_text='UUID is required to add a restaurant.',
     )
 
     class Meta:
         model = Profile
-        fields = ('restaurant', )
+        fields = ('restaurant_id', )
 
 
     #  # Overriding save allows us to process the value of 'toppings' field
