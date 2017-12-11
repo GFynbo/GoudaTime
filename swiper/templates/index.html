@@ -21,8 +21,10 @@
         </ul>
         <div class="card-body">
             <form method="post">
-                <a class="btn-swiper" href="#">Eww</a>
-                <a class="btn-swiper btn-secondary-swiper" href="">Yum!</a>
+                {% csrf_token %}
+                <input type="hidden" name="restaurant-id" value="{{ restaurant.id }}">
+                <button class="btn-swiper" value="deny" name="Submit">Eww</button>
+                <button class="btn-swiper btn-secondary-swiper" value="approve" name="Submit">Yum!</button>
             </form>
         </div>
     </div>

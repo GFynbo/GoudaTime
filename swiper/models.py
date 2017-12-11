@@ -30,7 +30,6 @@ class Restaurant(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     name = models.CharField(max_length=100, help_text="Enter the restaurant name (e.g. Santarpio's or Jimmy's Subs)")
-    manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     description = models.TextField(max_length=1000, help_text="Enter a brief description of the restaurant")
     address = models.CharField(max_length=75, help_text='123 Sample St, City ST 90210')
@@ -55,14 +54,58 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    matches = models.ManyToManyField(Restaurant, help_text="List of matches for each user to a restaurant.")
-    current_location_x = models.DecimalField(max_digits=9, decimal_places=6, default=42.3601)
-    current_location_y = models.DecimalField(max_digits=9, decimal_places=6, default=71.0589)
 
     def add_restaurant_to_matches(self, restaurant):
         ''' add a selected restaurant to the user '''
         if (restaurant not in self.matches):
             self.matches.add(restaurant)
+
+class MatchManager(models.Manager):
+
+    def matches_for_user(self, user):
+        matches = []
+        for match in self.filter(from_user=user).select_related(depth=1):
+            matches.append({"match": match.to_restaurant, "match": match})
+        return friends
+
+    def are_matched(self, user, restaurant):
+        if self.filter(user=user, restaurant=restaurant).count() > 0:
+            return True
+        return False
+
+    def remove(self, user, restaurant):
+        if self.filter(to_user=user):
+            friendship = self.filter(to_user=user, match)
+        match.delete()
+
+class Match(models.Model):
+    """
+    A match is a uni-directional association between a restaurant and user who
+    wants the association (match).
+    """
+    if not Match.objects.are_matched(self.user, self.restaurant):
+            friendship = Match(user=self.user, restaurant=self.restaurant)
+            friendship.save()
+            self.status = "5"
+            self.save()
+            if notification:
+                notification.send([self.from_user], "friends_accept", {"invitation": self})
+                notification.send([self.to_user], "friends_accept_sent", {"invitation": self})
+                for user in friend_set_for(self.to_user) | friend_set_for(self.from_user):
+                    if user != self.to_user and user != self.from_user:
+                        notification.send([user], "friends_otherconnect", {"invitation": self, "to_user": self.to_user})
+
+    to_restaurant = models.ForeignKey(User, related_name="matches")
+    # @@@ relationship types
+    added = models.DateField(default=datetime.date.today)
+
+    objects = MatchManager()
+
+    class Meta:
+        unique_together = ('to_restaurant',)
+
+def match_set_for(user):
+    return set([obj["match"] for obj in Match.objects.matches_for_user(user)])
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

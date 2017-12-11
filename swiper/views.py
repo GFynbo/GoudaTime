@@ -16,8 +16,9 @@ def index(request):
     if request.method == 'POST':
         form = AddRestaurantForm(request.POST)
         if form.is_valid():
-            new_restaurant = Restaurant(name=form.cleaned_data['name'])
-            user.matches.add()
+            user = request.user
+            user.profile.matches.add(Restaurant.objects.filter(pk=form.cleaned_data['restaurant-id']))
+            user.save()
             return redirect('index')
     else:
         form = AddRestaurantForm()
