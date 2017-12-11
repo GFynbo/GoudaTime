@@ -35,10 +35,8 @@
                 <ul class="nav navbar-nav">
                     {% if user.is_authenticated %}
                     <li class="profile"><a href="/swiper/">Home</a></li>
-                    <li class="profile"><a href="/swiper/profile/">Profile</a></li>
                     <li ><a href="/swiper/matches" >Matches</a></li>
-                    <li ><a href="#resturaunt" >Personal Favorites</a></li>
-                    <li><a href="/accounts/logout">Logout</a></li>
+                    <li class="profile"><a href="/swiper/profile/">Profile</a></li>
                     {% endif %}
                     <li><a href="/swiper/about">About</a></li>
                 </ul>
@@ -48,6 +46,7 @@
                 {% if user.is_authenticated %}
                 <ul class="nav navbar-nav">
                     <li><a href="/swiper/profile/">Welcome, {{user.username}}!</a></li>
+                    <li><a href="/accounts/logout">Logout</a></li>
                 </ul>
                 {% else %}
                 <ul class="nav navbar-nav">
