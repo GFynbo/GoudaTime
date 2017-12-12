@@ -410,3 +410,44 @@ RESTAURANT PAGE
 .restaurant-display-info {
     text-align: left;
 }
+
+/*
+*****************
+MATCHES PAGE
+*****************
+*/
+
+.card-match {
+    background-color: white;
+    float: left;
+    margin: 30px;
+    border-radius: 3px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.card-match .card-img-top {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.card-match .card-title {
+    padding: 5px;
+    margin-top: 0px;
+    background: black;
+    color: white;
+}
+
+.card-match .card-text {
+    text-align: left;
+    padding: 5px;
+}
+
+.card-match .match-button {
+    margin-bottom: 5px;
+    width: 90%;
+}
+
+.close-me {
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
