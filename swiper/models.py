@@ -46,24 +46,6 @@ class Restaurant(models.Model):
         """
         return self.name
 
-class Profile(models.Model):
-    """
-    Extension of the User model to allow some extra information
-    """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to = 'swiper/static/img/' + str(timezone.now), default = 'swiper/static/img/no-img.png')
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-
-    def get_matches(self):
-        matches = Match.objects.filter(user=self.user)
-        return matches
-
-    def add_match(self, restaurant):
-        new_match = Match(user=self.user, restaurant=restaurant, date_matched=timezone.now)
-        new_match.save()
-
 class Match(models.Model):
     """
     A match is a bi-directional association between a restaurant and user who
@@ -73,18 +55,10 @@ class Match(models.Model):
     restaurant = models.ForeignKey(Restaurant, related_name="match_restaurant")
     date_matched = models.DateField(default=timezone.now, editable=False)
 
+    def get_matches(self, user):
+        matches = Match.objects.filter(user=user)
+        return matches
 
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-
-@receiver(post_save, sender=User)
-def update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+    def add_match(self, user, restaurant):
+        new_match = Match(user=user, restaurant=restaurant, date_matched=timezone.now)
+        new_match.save()

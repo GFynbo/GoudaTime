@@ -1,24 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from swiper.models import Profile, Restaurant
+from swiper.models import Restaurant
 
 class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2', )
+        fields = ('username', 'email', 'password1', 'password2', )
 
-class AddRestaurantForm(forms.ModelForm):
-    # The restaurant key for adding the model instance later
-    restaurant_id = forms.UUIDField(
-        required=True,
-        help_text='UUID is required to add a restaurant.',
-    )
-
-    class Meta:
-        model = Profile
-        fields = ('restaurant_id', )
 
 
     #  # Overriding save allows us to process the value of 'toppings' field

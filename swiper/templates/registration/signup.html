@@ -48,8 +48,15 @@ $(function() {
                                     {% csrf_token %}
 									<div class="form-group">
                                         <label>Email</label>
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="john@doe.com" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" maxlength="150" autofocus="" required="">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="john_doe" value="{% if form.username.value %}{{ form.username.value }}{% endif %}" maxlength="150" autofocus="" required="">
                                         {% for error in form.username.errors %}
+                                          <p style="color: red">{{ error }}</p>
+                                        {% endfor %}
+									</div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+										<input type="email" name="email" id="email" tabindex="2" class="form-control" placeholder="john@doe.com" value="{% if form.email.value %}{{ form.email.value }}{% endif %}" maxlength="150" autofocus="" required="">
+                                        {% for error in form.email.errors %}
                                           <p style="color: red">{{ error }}</p>
                                         {% endfor %}
 									</div>
