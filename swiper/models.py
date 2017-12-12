@@ -15,7 +15,7 @@ class Picture(models.Model):
     """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, help_text="Enter the picture name (e.g. Seating Area, or Kitchen)")
-    image = models.ImageField(upload_to = 'swiper/static/img/' + str(id), default = 'swiper/static/img/no-img.png')
+    image = models.ImageField(upload_to = 'swiper/static/img/', default = 'swiper/static/img/no-img.png')
 
     def __str__(self):
         """
