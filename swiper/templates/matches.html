@@ -20,10 +20,10 @@
     </div>
     <div class="row">
         <div class="col-lg-6">
-            {% if user.matches %}
-                {% for restaurant in user.matches.all %}
-                    <h2>{{ restaurant.name }}</h2>
-                    <img src="{{ restaurant.name }}" />
+            {% if matches %}
+                {% for match in matches %}
+                    <h2>{{ match.restaurant }}</h2>
+                    <p>{{ match.restaurant.description }}</p>
                 {% endfor %}
             {% endif %}
         </div>

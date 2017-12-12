@@ -46,6 +46,23 @@ class Restaurant(models.Model):
         """
         return self.name
 
+class MatchManager(models.Manager):
+    """
+    This is the manager class for the match system for creating users and helpful
+    functions in general.
+    """
+    def total_matches():
+        matches = Match.objects.all()
+        return len(matches)
+
+    def get_matches(user):
+        matches = Match.objects.filter(user=user)
+        return matches
+
+    def add_match(user, restaurant):
+        new_match = Match(user=user, restaurant=restaurant)
+        new_match.save()
+
 class Match(models.Model):
     """
     A match is a bi-directional association between a restaurant and user who
@@ -53,12 +70,4 @@ class Match(models.Model):
     """
     user = models.ForeignKey(User, related_name="match_user")
     restaurant = models.ForeignKey(Restaurant, related_name="match_restaurant")
-    date_matched = models.DateField(default=timezone.now, editable=False)
-
-    def get_matches(self, user):
-        matches = Match.objects.filter(user=user)
-        return matches
-
-    def add_match(self, user, restaurant):
-        new_match = Match(user=user, restaurant=restaurant, date_matched=timezone.now)
-        new_match.save()
+    date_matched = models.DateField(auto_now_add=True, editable=False)

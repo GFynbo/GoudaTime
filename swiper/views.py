@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from .models import Restaurant
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, render_to_response
+from django.template import RequestContext
 
-from swiper.forms import SignUpForm
+from swiper.forms import MatchRestaurantForm, SignUpForm
+from swiper.models import Match, MatchManager
 
 @login_required
 def index(request):
@@ -14,10 +16,17 @@ def index(request):
     View function for home page of site.
     """
 
-    if Restaurant.objects.all():
-        current_restaurant = Restaurant.objects.all()[0]
+    if request.method == 'POST':
+        form = MatchRestaurantForm(request.POST)
+        if form.is_valid():
+            form.save(request.user)
+            return redirect('index')
     else:
-        current_restaurant = None
+        form = MatchRestaurantForm()
+        if Restaurant.objects.all():
+            current_restaurant = Restaurant.objects.all()[0]
+        else:
+            current_restaurant = None
 
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -76,13 +85,13 @@ def matches(request):
     """
     View function for matches page of each user to display matched restaurants
     """
+    user_pk = request.user.pk
+    matches = MatchManager.get_matches(user=user_pk)
 
     # Render the HTML template index.html with the data in the context variable
-    return render(
-        request,
-        'matches.html',
-        context={},
-    )
+    return render(request, 'matches.html',
+                              {'matches': matches},)
+
 
 @login_required
 def add_match(request):
