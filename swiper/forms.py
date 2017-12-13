@@ -16,4 +16,7 @@ class MatchRestaurantForm(forms.Form):
     def save(self, user):
         curr_user = User.objects.get(pk=user.pk)
         restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id'])
-        MatchManager.add_match(user=curr_user, restaurant=restaurant)
+
+        # dont add an existing match!
+        if not Match.objects.filter(user=curr_user, restaurant=restaurant):
+            MatchManager.add_match(user=curr_user, restaurant=restaurant)

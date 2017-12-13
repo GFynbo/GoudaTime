@@ -37,7 +37,7 @@ NAVIGATION
 }
 
 /* $Buttom */
-a.btn-swiper {
+.btn-swiper {
   display: inline-block;
   margin: 15px 15px 0;
   padding: .6em 1.1em;
@@ -57,7 +57,7 @@ a.btn-swiper {
   -webkit-transition: box-shadow .3s;
   transition: box-shadow .3s;
 }
-a.btn-swiper:hover, a.btn-swiper:focus {
+.btn-swiper:hover, a.btn-swiper:focus {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #FE4365;
   -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
   transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
@@ -65,16 +65,16 @@ a.btn-swiper:hover, a.btn-swiper:focus {
   animation: gelatine 0.5s 1;
 }
 
-a.btn-secondary-swiper {
+.btn-secondary-swiper {
   background: #5ABA55;
   box-shadow: 0 0 0 -2px #ffffff, 0 0 0 -1px #5ABA59;
 }
-a.btn-secondary-swiper:hover {
+.btn-secondary-swiper:hover {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #5ABA55;
 }
 
-a.btn-swiper:active,
-a.btn-secondary-swiper:active {
+.btn-swiper:active,
+.btn-secondary-swiper:active {
   background: #4ECDC4;
   -webkit-transition-duration: 0;
   transition-duration: 0;
@@ -439,7 +439,9 @@ MATCHES PAGE
 
 .card-match .card-text {
     text-align: left;
-    padding: 5px;
+    padding: 10px;
+    font-family: arial, sans-serif;
+    font-size: 1.6rem;
 }
 
 .card-match .match-button {
