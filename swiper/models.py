@@ -44,7 +44,7 @@ class Restaurant(models.Model):
         """
         String for representing the Model object (in Admin site etc.)
         """
-        return self.name
+        return str(self.name)
 
 class MatchManager(models.Manager):
     """
@@ -58,6 +58,9 @@ class MatchManager(models.Manager):
     def get_matches(user):
         matches = Match.objects.filter(user=user)
         return matches
+
+    def check_match(user, restaurant):
+        return Match.objects.filter(user=user, restaurant=restaurant)
 
     def add_match(user, restaurant):
         new_match = Match(user=user, restaurant=restaurant)

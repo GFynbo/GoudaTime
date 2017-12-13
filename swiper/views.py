@@ -15,6 +15,7 @@ def index(request):
     """
     View function for home page of site.
     """
+    restaurants = None
 
     if request.method == 'POST':
         form = MatchRestaurantForm(request.POST)
@@ -23,16 +24,20 @@ def index(request):
             return redirect('index')
     else:
         form = MatchRestaurantForm()
-        if Restaurant.objects.all():
-            current_restaurant = Restaurant.objects.all()[0]
-        else:
-            current_restaurant = None
+
+    user_pk = request.user.pk
+    if Restaurant.objects.all():
+        for rest in  Restaurant.objects.all():
+            if not MatchManager.check_match(user=user_pk, restaurant=rest):
+                restaurants = rest
+                break
+        print(restaurants)
 
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
         'index.html',
-        context={'restaurant': current_restaurant},
+        context={'restaurant': restaurants},
     )
 
 @login_required
