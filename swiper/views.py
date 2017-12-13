@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404, render, redirect, render_to_resp
 from django.template import RequestContext
 
 from swiper.forms import MatchRestaurantForm, RemoveRestaurantForm, SignUpForm
-from swiper.models import Match, MatchManager
+from swiper.models import Deny, DenyManager, Match, MatchManager
 
 @login_required
 def index(request):
@@ -28,7 +28,7 @@ def index(request):
     user_pk = request.user.pk
     if Restaurant.objects.all():
         for rest in  Restaurant.objects.all():
-            if not MatchManager.check_match(user=user_pk, restaurant=rest):
+            if not MatchManager.check_match(user=user_pk, restaurant=rest) and not DenyManager.check_deny(user=user_pk, restaurant=rest):
                 restaurants = rest
                 break
         print(restaurants)

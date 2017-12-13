@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from swiper.models import Match, MatchManager, Restaurant
+from swiper.models import Deny, DenyManager, Match, MatchManager, Restaurant
 from django.shortcuts import get_object_or_404
 
 class SignUpForm(UserCreationForm):
@@ -28,4 +28,6 @@ class RemoveRestaurantForm(forms.Form):
         curr_user = User.objects.get(pk=user.pk)
         restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id'])
 
-        print("made it!")
+        # dont add an existing match!
+        if not Deny.objects.filter(user=curr_user, restaurant=restaurant):
+            DenyManager.add_deny(user=curr_user, restaurant=restaurant)
