@@ -12,7 +12,6 @@ class SignUpForm(UserCreationForm):
 
 class MatchRestaurantForm(forms.Form):
     restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.")
-    deny_or_add = forms.CharField(help_text="Please choose either 'Deny' or 'Add'", min_length=4)
 
     def save(self, user):
         curr_user = User.objects.get(pk=user.pk)
@@ -21,3 +20,12 @@ class MatchRestaurantForm(forms.Form):
         # dont add an existing match!
         if not Match.objects.filter(user=curr_user, restaurant=restaurant):
             MatchManager.add_match(user=curr_user, restaurant=restaurant)
+
+class RemoveRestaurantForm(forms.Form):
+    restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.")
+
+    def save(self, user):
+        curr_user = User.objects.get(pk=user.pk)
+        restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id'])
+
+        print("made it!")

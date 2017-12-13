@@ -20,7 +20,7 @@
                 <li class="list-group-item list-group-swiper">{{ restaurant.description }}</li>
             </ul>
             <div class="card-body">
-                <form class="swiper-form" method="post">
+                <form class="swiper-form" action="/swiper/remove-restaurant/" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
                     <button class="btn-swiper" value="deny" name="Deny">Eww</button>
@@ -28,7 +28,7 @@
                 <form class="swiper-form" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
-                    <button class="btn-swiper btn-secondary-swiper" value="approve" name="Submit">Yum!</button>
+                    <button class="btn-swiper btn-secondary-swiper" value="add" name="Submit">Yum!</button>
                 </form>
             </div>
         </div>

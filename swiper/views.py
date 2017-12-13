@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.template import RequestContext
 
-from swiper.forms import MatchRestaurantForm, SignUpForm
+from swiper.forms import MatchRestaurantForm, RemoveRestaurantForm, SignUpForm
 from swiper.models import Match, MatchManager
 
 @login_required
@@ -18,12 +18,12 @@ def index(request):
     restaurants = None
 
     if request.method == 'POST':
-        form = MatchRestaurantForm(request.POST)
-        if form.is_valid():
-            form.save(request.user)
+        add = MatchRestaurantForm(request.POST)
+        if add.is_valid():
+            add.save(request.user)
             return redirect('index')
     else:
-        form = MatchRestaurantForm()
+        add = MatchRestaurantForm()
 
     user_pk = request.user.pk
     if Restaurant.objects.all():
@@ -41,10 +41,16 @@ def index(request):
     )
 
 @login_required
-def add_restaurant(request, restaurant):
-    """ function to add the restaurant to current user"""
-    user.matches.add()
-    pass
+def remove_restaurant(request):
+    """ function to remove the restaurant to for the current user"""
+    if request.method == 'POST':
+        remove = RemoveRestaurantForm(request.POST)
+        if remove.is_valid():
+            remove.save(request.user)
+            return redirect('index')
+    else:
+        remove = RemoveRestaurantForm()
+    return redirect('index')
 
 @login_required
 def show_restaurant(request, restaurant_id):
