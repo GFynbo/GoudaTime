@@ -403,6 +403,16 @@ PROFILE
 
 /*
 *****************
+SWIPER - HOME
+*****************
+*/
+
+.swiper-form {
+    display: inline-block;
+}
+
+/*
+*****************
 RESTAURANT PAGE
 *****************
 */
