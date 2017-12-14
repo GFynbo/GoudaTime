@@ -27,8 +27,13 @@ def index(request):
 
     user_pk = request.user.pk
     if Restaurant.objects.all():
-        for rest in  Restaurant.objects.all():
-            if not MatchManager.check_match(user=user_pk, restaurant=rest) and not DenyManager.check_deny(user=user_pk, restaurant=rest):
+        if Match.objects.all():
+            for rest in  Restaurant.objects.all():
+                if not MatchManager.check_match(user=user_pk, restaurant=rest) and not DenyManager.check_deny(user=user_pk, restaurant=rest):
+                    restaurants = rest
+                    break
+        else:
+            for rest in  Restaurant.objects.all():
                 restaurants = rest
                 break
         print(restaurants)
