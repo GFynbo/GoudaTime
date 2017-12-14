@@ -28,7 +28,7 @@
 </head>
 
 <body>
-
+    {% block nav %}
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-gouda">
         <div class="container">
             <form class="navbar-form navbar-left">
@@ -37,11 +37,11 @@
                 </div>
                 <ul class="nav navbar-nav">
                     {% if user.is_authenticated %}
-                    <li class="profile"><a href="/swiper/">Home</a></li>
-                    <li ><a href="/swiper/matches" >Matches</a></li>
-                    <li class="profile"><a href="/swiper/profile/">Profile</a></li>
+                    <li>{% block nav-home %}<a href="/swiper/">Home</a>{% endblock %}</li>
+                    <li>{% block nav-matches %}<a href="/swiper/matches" >Matches</a>{% endblock %}</li>
+                    <li class="profile">{% block nav-profile %}<a href="/swiper/profile/">Profile</a>{% endblock %}</li>
                     {% endif %}
-                    <li><a href="/swiper/about">About</a></li>
+                    <li>{% block nav-about %}<a href="/swiper/about">About</a>{% endblock %}</li>
                 </ul>
             </form>
             <form class="navbar-form navbar-right">
@@ -60,6 +60,7 @@
             </form>
         </div><!--/.navbar-collapse -->
     </nav>
+    {% endblock %}
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">

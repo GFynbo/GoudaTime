@@ -35,8 +35,24 @@ pip install -r requirements.txt
 
 8. Open your browser and go to http://127.0.0.1:8000, you will be greeted with a welcome page.
 
+---
+
 ## Tasks & Goals
-- TODO
+### TODOS
+* Re-organize the models into individual files for aesthetics and styles
+* Add delete feature on existing matches
+* Force matches into all being the same size
+* Get user's current location and update their profile/model instance
+* Allow users to update and edit their existing profiles
+* Allow uses to add a profile picture
+* Move forms into individual files in one folder
+* Center login/signup buttons on the nav bar
+* ~~Show active page on the navbar~~
+
+### BIG TODOS
+* Dynamically load restaurants from surrounding area
+* Allow group matching to help people decide on a place to eat together
+
 
 ## The Team
 
