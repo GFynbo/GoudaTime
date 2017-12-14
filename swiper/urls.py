@@ -18,4 +18,5 @@ urlpatterns = [
     url(r'^thank-you/$', views.thank_you, name='Thank You'),
     url(r'^restaurants/(?P<restaurant_id>[0-9a-f-]+)', views.show_restaurant, name="Restaurant"),
     url(r'^remove-restaurant/$', views.remove_restaurant, name='Remove Restaurant'),
+    url(r'^update-profile/$', views.update_profile, name='Update Profile'),
 ]

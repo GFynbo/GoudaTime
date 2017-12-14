@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.template import RequestContext
 
-from swiper.forms import MatchRestaurantForm, RemoveRestaurantForm, SignUpForm
+from swiper.forms import MatchRestaurantForm, RemoveRestaurantForm, SignUpForm, UpdateProfile
 from swiper.models import Deny, DenyManager, Match, MatchManager
 
 @login_required
@@ -90,6 +90,18 @@ def profile(request):
         'profile.html',
         context={},
     )
+
+def update_profile(request):
+    args = {}
+
+    if request.method == 'POST':
+        form = UpdateProfile(request.POST)
+        if form.is_valid():
+            form.save(request.user)
+            return redirect('Profile')
+    else:
+        form = UpdateProfile()
+    return render(request, 'profile.html', args)
 
 @login_required
 def matches(request):

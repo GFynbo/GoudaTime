@@ -39,7 +39,8 @@ pip install -r requirements.txt
 
 ## Tasks & Goals
 ### TODOS
-* Re-organize the models into individual files for aesthetics and styles
+* Remove 'Deny' model and implement single field in Match to determine whether its a match or deny
+* Re-organize the models AND forms into individual files for aesthetics and styles
 * Add delete feature on existing matches
 * Force matches into all being the same size
 * Get user's current location and update their profile/model instance

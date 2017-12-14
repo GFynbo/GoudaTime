@@ -33,28 +33,19 @@ class RemoveRestaurantForm(forms.Form):
             DenyManager.add_deny(user=curr_user, restaurant=restaurant)
 
 class UpdateProfile(forms.ModelForm):
-    username = forms.CharField(required=True)
     email = forms.EmailField(required=True)
-    first_name = forms.CharField(required=False)
-    last_name = forms.CharField(required=False)
+    first_name = forms.CharField(required=False, max_length=50)
+    last_name = forms.CharField(required=False, max_length=50)
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'first_name', 'last_name')
+        fields = ('email', 'first_name', 'last_name')
 
-    def clean_email(self):
-        username = self.cleaned_data.get('username')
-        email = self.cleaned_data.get('email')
-
-        if email and User.objects.filter(email=email).exclude(username=username).count():
-            raise forms.ValidationError('This email address is already in use. Please supply a different email address.')
-        return email
-
-    def save(self, commit=True):
-        user = super(RegistrationForm, self).save(commit=False)
+    def save(self, user, commit=True):
+        user = User.objects.get(pk=user.pk)
         user.email = self.cleaned_data['email']
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
 
         if commit:
             user.save()
-
-        return user

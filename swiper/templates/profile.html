@@ -19,15 +19,50 @@
 <div class="container container-full">
     <div class="row">
         <img class="profile-pic" src="/{{ user.profile_pic }}" alt="" />
-        <h1>{{ user.username }}</h1>
+        <h1>{{ user.username }}<a href="#" class="small-edit-profile" data-toggle="modal" data-target="#myModal">(edit)</a></h1>
     </div>
     <div class="row">
         <div class="card-group swiper-row">
             <h2>Good to see you, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!</h2>
-            <h3>First Name:  {% if user.first_name %}{{ user.first_name }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
-            <h3>Last Name: {% if user.last_name %}{{ user.last_name }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
-            <h3>Email: {% if user.email %}{{ user.email }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
-            <h3>Location: {% if user.current_location_x and user.current_location_y%}{{ user.current_location_x }}, {{ user.current_location_y }}{% else %}<a href="#">Add me!</a>{% endif %}</h3>
+            <h3>First Name:  {% if user.first_name %}{{ user.first_name }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h3>
+            <h3>Last Name: {% if user.last_name %}{{ user.last_name }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h3>
+            <h3>Email: {% if user.email %}{{ user.email }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h3>
+            <!-- ADD LATER <h3>Location: {% if user.current_location_x and user.current_location_y%}{{ user.current_location_x }}, {{ user.current_location_y }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h3> -->
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3>Edit {{ user.username }}</h3>
+                    </div>
+                	<form id="update-user-form" action="/swiper/update-profile/" method="post" role="form" style="display: block;">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="sizing-addon1">Email</span>
+                                <input type="text" name="email" class="form-control" placeholder="john@doe.com" aria-label="Username" aria-describedby="sizing-addon1" value="{% if user.email %}{{ user.email }}{% endif %}">
+                            </div>
+                            <br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="sizing-addon1">First Name</span>
+                                <input type="text" name="first_name" class="form-control" placeholder="John" aria-label="Username" aria-describedby="sizing-addon1" value="{% if user.first_name %}{{ user.first_name }}{% endif %}">
+                            </div>
+                            <br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="sizing-addon1">Last Name</span>
+                                <input type="text" name="last_name" class="form-control" placeholder="Doe" aria-label="Username" aria-describedby="sizing-addon1" value="{% if user.last_name %}{{ user.last_name }}{% endif %}">
+                            </div>
+                            <br>
+                        </div>
+                        <div class="modal-body">
+                            <button type="submit" class="btn btn-success">Save</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
