@@ -44,7 +44,7 @@ pip install -r requirements.txt
 * Add delete feature on existing matches
 * Force matches into all being the same size
 * Get user's current location and update their profile/model instance
-* Allow users to update and edit their existing profiles
+* ~~Allow users to update and edit their existing profiles~~
 * Allow uses to add a profile picture
 * Move forms into individual files in one folder
 * Center login/signup buttons on the nav bar
