@@ -35,6 +35,9 @@ pip install -r requirements.txt
 
 8. Open your browser and go to http://127.0.0.1:8000, you will be greeted with a welcome page.
 
+## Tasks & Goals
+- TODO
+
 ## The Team
 
 [Gavin Fynbo](https://gavinfynbo.com) (Development Lead), [Tatiana Diaz-Gallegos](https://tatianaodg.com) (Developer), [Jio Jung](https://github.com/jungjio) (Developer)
