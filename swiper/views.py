@@ -37,7 +37,6 @@ def index(request):
             for rest in  Restaurant.objects.all():
                 restaurants = rest
                 break
-        print(restaurants)
 
     # Render the HTML template index.html with the data in the context variable
     return render(
@@ -113,6 +112,7 @@ def update_profile(request):
 def matches(request):
     """
     View function for matches page of each user to display matched restaurants
+    also adds the delete match functionality for each restaurant
     """
     user_pk = request.user.pk
     matches = MatchManager.get_matches(user=user_pk, deny=False)
@@ -125,7 +125,7 @@ def matches(request):
     else:
         form = RemoveMatchForm()
 
-    # Render the HTML template index.html with the data in the context variable
+    # Render the HTML template matches.html with the data in the context variable
     return render(request, 'matches.html',
                               {'matches': matches},)
 

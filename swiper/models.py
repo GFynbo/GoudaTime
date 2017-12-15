@@ -56,6 +56,7 @@ class MatchManager(models.Manager):
         return len(matches)
 
     def get_matches(user, deny=False):
+        # get matches for the match page
         matches = Match.objects.filter(user=user, deny=deny)
         return matches
 
