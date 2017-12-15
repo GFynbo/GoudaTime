@@ -33,19 +33,16 @@ class RemoveRestaurantForm(forms.Form):
             MatchManager.add_match(user=curr_user, restaurant=restaurant, deny=deny)
 
 class RemoveMatchForm(forms.Form):
-    restaurant_id_matches = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
+    restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
 
     def save(self, user):
         curr_user = User.objects.get(pk=user.pk)
-        restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id_matches'])
+        restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id'])
 
         # set the match to deny
-        try:
-            rest = Match.objects.get(user=curr_user, restaurant=restaurant)
-            rest.deny = True
-            rest.save()
-        except ValueError:
-            raise Http404
+        rest = Match.objects.get(user=curr_user, restaurant=restaurant)
+        rest.deny = True
+        rest.save()
 
 class UpdateProfile(forms.ModelForm):
     email = forms.EmailField(required=True)
