@@ -17,7 +17,7 @@
 {% endif %}
 
 
-<div class="container container-full">
+<div class="container container-full" onload="initElement();">
     <div class="row">
         <h1>Restaurants</h1>
     </div>
@@ -32,24 +32,9 @@
                     <h2 class="card-title">{{ match.restaurant }}</h2>
                     <p class="card-text">{{ match.restaurant.description }}</p>
                     <a href="/swiper/restaurants/{{match.restaurant.id}}" class="btn btn-success match-button">Open</a>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h3>Are you sure?</h3>
-                        </div>
-                          <div class="modal-body">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                 </div>
                 <div class="close-me">
-                    <span id='close' data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
+                    <span id='close' data-toggle="modal" data-target="#myModal" data-whatever="{{ match.restaurant.pk }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
                 </div>
             </div>
             {% endfor %}
@@ -59,5 +44,37 @@
         {% endif %}
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3>Are you sure? {{ match.restaurant.pk }}</h3>
+        </div>
+
+        <div class="modal-body">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" id="restaurant_id_matches" name="restaurant_id" value="">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $('#myModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var restPk = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-header h3').text('Delete ' + restPk)
+      modal.find('#restaurant_id_matches').val(restPk)
+    })
+</script>
 
 {% endblock %}

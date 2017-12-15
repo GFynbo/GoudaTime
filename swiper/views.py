@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from .models import Restaurant
 from django.contrib.auth import login, authenticate, get_user
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -7,8 +6,10 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.template import RequestContext
 
-from swiper.forms import MatchRestaurantForm, RemoveRestaurantForm, SignUpForm, UpdateProfile
-from swiper.models import Deny, DenyManager, Match, MatchManager
+from swiper.forms import MatchRestaurantForm, RemoveMatchForm, RemoveRestaurantForm, SignUpForm, UpdateProfile
+from swiper.models import Match, MatchManager
+
+from .models import Restaurant
 
 @login_required
 def index(request):
@@ -29,7 +30,7 @@ def index(request):
     if Restaurant.objects.all():
         if Match.objects.all():
             for rest in  Restaurant.objects.all():
-                if not MatchManager.check_match(user=user_pk, restaurant=rest) and not DenyManager.check_deny(user=user_pk, restaurant=rest):
+                if not MatchManager.check_match(user=user_pk, restaurant=rest):
                     restaurants = rest
                     break
         else:
@@ -114,7 +115,15 @@ def matches(request):
     View function for matches page of each user to display matched restaurants
     """
     user_pk = request.user.pk
-    matches = MatchManager.get_matches(user=user_pk)
+    matches = MatchManager.get_matches(user=user_pk, deny=False)
+
+    if request.method == 'POST':
+        form = RemoveMatchForm(request.POST)
+        if form.is_valid():
+            form.save(request.user)
+            return redirect('Matches')
+    else:
+        form = RemoveMatchForm()
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'matches.html',

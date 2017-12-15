@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from swiper.models import Deny, DenyManager, Match, MatchManager, Restaurant
+from swiper.models import Match, MatchManager, Restaurant
 from django.shortcuts import get_object_or_404
 
 class SignUpForm(UserCreationForm):
@@ -11,7 +11,7 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2', )
 
 class MatchRestaurantForm(forms.Form):
-    restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.")
+    restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
 
     def save(self, user):
         curr_user = User.objects.get(pk=user.pk)
@@ -22,15 +22,30 @@ class MatchRestaurantForm(forms.Form):
             MatchManager.add_match(user=curr_user, restaurant=restaurant)
 
 class RemoveRestaurantForm(forms.Form):
-    restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.")
+    restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
 
-    def save(self, user):
+    def save(self, user, deny=True):
         curr_user = User.objects.get(pk=user.pk)
         restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id'])
 
         # dont add an existing match!
-        if not Deny.objects.filter(user=curr_user, restaurant=restaurant):
-            DenyManager.add_deny(user=curr_user, restaurant=restaurant)
+        if not Match.objects.filter(user=curr_user, restaurant=restaurant):
+            MatchManager.add_match(user=curr_user, restaurant=restaurant, deny=deny)
+
+class RemoveMatchForm(forms.Form):
+    restaurant_id_matches = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
+
+    def save(self, user):
+        curr_user = User.objects.get(pk=user.pk)
+        restaurant = Restaurant.objects.get(pk=self.cleaned_data['restaurant_id_matches'])
+
+        # set the match to deny
+        try:
+            rest = Match.objects.get(user=curr_user, restaurant=restaurant)
+            rest.deny = True
+            rest.save()
+        except ValueError:
+            raise Http404
 
 class UpdateProfile(forms.ModelForm):
     email = forms.EmailField(required=True)

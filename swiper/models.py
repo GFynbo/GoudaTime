@@ -55,15 +55,15 @@ class MatchManager(models.Manager):
         matches = Match.objects.all()
         return len(matches)
 
-    def get_matches(user):
-        matches = Match.objects.filter(user=user)
+    def get_matches(user, deny=False):
+        matches = Match.objects.filter(user=user, deny=deny)
         return matches
 
     def check_match(user, restaurant):
         return Match.objects.filter(user=user, restaurant=restaurant)
 
-    def add_match(user, restaurant):
-        new_match = Match(user=user, restaurant=restaurant)
+    def add_match(user, restaurant, deny=False):
+        new_match = Match(user=user, restaurant=restaurant, deny=deny)
         new_match.save()
 
 class Match(models.Model):
@@ -74,32 +74,4 @@ class Match(models.Model):
     user = models.ForeignKey(User, related_name="match_user")
     restaurant = models.ForeignKey(Restaurant, related_name="match_restaurant")
     date_matched = models.DateField(auto_now_add=True, editable=False)
-
-class DenyManager(models.Manager):
-    """
-    This is the manager class for the deny system for creating denies and helpful
-    functions in general for keeping track of denies.
-    """
-    def total_denies():
-        denies = Deny.objects.all()
-        return len(denies)
-
-    def get_denies(user):
-        denies = Deny.objects.filter(user=user)
-        return denies
-
-    def check_deny(user, restaurant):
-        return Deny.objects.filter(user=user, restaurant=restaurant)
-
-    def add_deny(user, restaurant):
-        new_deny = Deny(user=user, restaurant=restaurant)
-        new_deny.save()
-
-class Deny(models.Model):
-    """
-    A deny is a bi-directional association between a restaurant and user who
-    does not want the association (deny).
-    """
-    user = models.ForeignKey(User, related_name="deny_user")
-    restaurant = models.ForeignKey(Restaurant, related_name="deny_restaurant")
-    date_denied = models.DateField(auto_now_add=True, editable=False)
+    deny = models.BooleanField(default=False)
