@@ -6,16 +6,16 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 
 ## Tasks & Goals
 ### TODOS
-* ~~Remove 'Deny' model and implement single field in Match to determine whether its a match or deny~~
 * Re-organize the models AND forms into individual files for aesthetics and styles
-* ~~Add delete feature on existing matches~~
 * Force matches into all being the same size (picture, text, height, width etc) and center
 * Get user's current location and update their profile/model instance <--- IMPORTANT
-* ~~Allow users to update and edit their existing profiles~~
 * Allow uses to add a profile picture
 * Move forms into individual files in one folder
 * Center login/signup buttons on the nav bar
 * ~~Show active page on the navbar~~
+* ~~Remove 'Deny' model and implement single field in Match to determine whether its a match or deny~~
+* ~~Allow users to update and edit their existing profiles~~
+* ~~Add delete feature on existing matches~~
 
 ### BIG TODOS
 * *Dynamically load restaurants from surrounding area*
