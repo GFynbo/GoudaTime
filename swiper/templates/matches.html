@@ -36,12 +36,12 @@
             {% for match in matches %}
             <div class="card card-match" style="width: 30rem;">
                 {% for picture in match.restaurant.pictures.all %}
-                <img class="card-img-top" src="/{{ picture.image }}" alt="{{ picture.name }}">
+                <img class="card-img-top card-img-top-restaurant" src="/{{ picture.image }}" alt="{{ picture.name }}">
                 {% endfor %}
                 <div class="card-body">
                     <h2 class="card-title">{{ match.restaurant }}</h2>
                     <p class="card-text">{{ match.restaurant.description }}</p>
-                    <a href="/swiper/restaurants/{{match.restaurant.id}}" class="btn btn-success match-button">Open</a>
+                    <a href="/swiper/restaurants/{{match.restaurant.id}}" class="btn btn-success match-button">Open {% bootstrap_icon "resize-full" %}</a>
                 </div>
                 <div class="close-me">
                     <span id='close' data-toggle="modal" data-target="#myModal" data-rest-pk="{{ match.restaurant.pk }}" data-rest-name="{{ match.restaurant.name }}"><a>{% bootstrap_icon "remove" extra_classes="matches-x-button" %}</a></span>
