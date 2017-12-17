@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-
+{% block title %} Logout{% endblock %}
 {% block content %}
 <div class="container container-full">
-    <h2>Logged out!</h2>
+    <h2>You've logged out!</h2>
 
     <a href="{% url 'login'%}">Click here to login again.</a>
 </div>

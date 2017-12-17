@@ -1,4 +1,16 @@
 {% load static %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,9 +64,9 @@
                     <li><a href="/accounts/logout">Logout</a></li>
                 </ul>
                 {% else %}
-                <ul class="nav navbar-nav">
-                    <a href="/accounts/login" class="btn btn-success">Log in</a>
-                    <a href="/swiper/signup" class="btn btn-primary">Sign up</a>
+                <ul class="nav navbar-nav navbar-right-buttons">
+                    <li class="navbar-button-right"><a href="/accounts/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log in</a></li>
+                    <li class=""><a href="/swiper/signup">Sign up</a></li>
                 </ul>
                 {% endif %}
             </form>

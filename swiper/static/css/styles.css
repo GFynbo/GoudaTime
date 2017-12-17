@@ -32,6 +32,12 @@ NAVIGATION
     /*border-bottom: 1px solid #096673;*/
 }
 
+.navbar-right-buttons {
+}
+
+.navbar-right-buttons > .navbar-button-right {
+}
+
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
 }
@@ -471,4 +477,10 @@ MATCHES PAGE
 .close-me {
     margin-top: 10px;
     padding-bottom: 10px;
+}
+
+
+.input-group-addon {
+    min-width: 100px;
+    text-align: left;
 }
