@@ -38,7 +38,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     {% if user.is_authenticated %}
-                    <li>{% block nav-home %}<a href="/swiper/">Home</a>{% endblock %}</li>
+                    <li>{% block nav-home %}<a href="/swiper/">{% bootstrap_icon "home" %} Home</a>{% endblock %}</li>
                     <li>{% block nav-matches %}<a href="/swiper/matches" >Matches</a>{% endblock %}</li>
                     <li class="profile">{% block nav-profile %}<a href="/swiper/profile/">Profile</a>{% endblock %}</li>
                     {% endif %}
@@ -66,6 +66,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
+            <div class="card card-inverse card-danger text-center">
             {% block content %}<!-- default content text (typically empty) -->{% endblock %}
 
             <!--p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p-->

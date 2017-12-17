@@ -13,41 +13,43 @@
 {% block title %} Home{% endblock %}
 
 {% load static %}
-{% block nav-home %}<a href="#" class="nav-active">Home</a>{% endblock %}
+{% block nav-home %}<a href="#" class="nav-active">{% bootstrap_icon "home" %} Home</a>{% endblock %}
 {% block content %}
-<div class="card-group swiper-row">
-    {% if restaurant %}
-        <h2>Find a Gouda restaurant...</h2>
-        <div class="card swiper-card">
-            {% for picture in restaurant.pictures.all %}
-            <img class="card-img-top card-img-swiper" src="/{{ picture.image }}" alt="{{ picture.name }}">
-            {% endfor %}
-            <div class="card-body">
-                <h2 class="card-text"> <a href="/swiper/restaurants/{{restaurant.id}}">{{ restaurant.name }}</a></h2>
+<div class="container container-full">
+    <div class="card-group swiper-row">
+        {% if restaurant %}
+            <h2>Find a Gouda restaurant...</h2>
+            <div class="card swiper-card">
+                {% for picture in restaurant.pictures.all %}
+                <img class="card-img-top card-img-swiper" src="/{{ picture.image }}" alt="{{ picture.name }}">
+                {% endfor %}
+                <div class="card-body">
+                    <h2 class="card-text"> <a href="/swiper/restaurants/{{restaurant.id}}">{{ restaurant.name }}</a></h2>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-swiper">{{ restaurant.hours }}</li>
+                    <li class="list-group-item list-group-swiper">{{ restaurant.address }}</li>
+                    <li class="list-group-item list-group-swiper">{{ restaurant.description }}</li>
+                </ul>
+                <div class="card-body">
+                    <form class="swiper-form" action="/swiper/remove-restaurant/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+                        <button class="btn-swiper" value="deny" name="Deny">Eww</button>
+                    </form>
+                    <form class="swiper-form" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+                        <button class="btn-swiper btn-secondary-swiper" value="add" name="Submit">Yum!</button>
+                    </form>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-swiper">{{ restaurant.hours }}</li>
-                <li class="list-group-item list-group-swiper">{{ restaurant.address }}</li>
-                <li class="list-group-item list-group-swiper">{{ restaurant.description }}</li>
-            </ul>
-            <div class="card-body">
-                <form class="swiper-form" action="/swiper/remove-restaurant/" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
-                    <button class="btn-swiper" value="deny" name="Deny">Eww</button>
-                </form>
-                <form class="swiper-form" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
-                    <button class="btn-swiper btn-secondary-swiper" value="add" name="Submit">Yum!</button>
-                </form>
-            </div>
-        </div>
-    {% else %}
-    {% bootstrap_icon "globe" extra_classes="profile-icon"%}
-    <h2>Can't find a Gouda restaurant 🧐</h2>
-    <p>No restaurants are available nearby.</p>
-    {% endif %}
+        {% else %}
+        {% bootstrap_icon "map-marker" extra_classes="profile-icon"%}
+        <h2>Can't find a Gouda restaurant 🧐</h2>
+        <p>No restaurants are available nearby.</p>
+        {% endif %}
+    </div>
 </div>
 
 
