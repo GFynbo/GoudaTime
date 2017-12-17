@@ -436,9 +436,17 @@ SWIPER - HOME
 RESTAURANT PAGE
 *****************
 */
+.row-restaurant {
+    margin-top: 50px;
+    float: left;
+    text-align: left;
+}
 
 .restaurant-display-info {
-    text-align: left;
+}
+
+.card-img-swiper-restaurant {
+    max-width: 450px;
 }
 
 /*
@@ -476,7 +484,6 @@ MATCHES PAGE
 
 .card-match .match-button {
     margin-bottom: 5px;
-    width: 90%;
 }
 
 .close-me {
@@ -491,5 +498,5 @@ MATCHES PAGE
 }
 
 .matches-x-button {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }

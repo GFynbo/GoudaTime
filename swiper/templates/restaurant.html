@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 {% block title %} {{ restaurant.name }}{% endblock %}
 
 {% block content %}
@@ -14,18 +24,18 @@
     {% endif %}
 {% endif %}
 
-<div class="container container-full">
-    <div class="row">
-        {% for picture in restaurant.pictures.all %}
-        <img class="card-img-top card-img-swiper" src="/{{ picture.image }}" alt="{{ picture.name }}">
-        {% endfor %}
-        <h1>{{ restaurant.name }}</h1>
-    </div>
-    <div class="row">
-        <div class="row restaurant-display-info">
+<div class="container-fluid">
+    <div class="row row-restaurant">
+        <div class=".col-sm-8">
+            <h1>{{ restaurant.name }}</h1>
             <p class=""><b>Hours:</b> {{ restaurant.hours }}</p>
             <p class=""><b>Location:</b> {{ restaurant.address }}</p>
             <p class=""><b>Description:</b> {{ restaurant.description }}</p>
+        </div>
+        <div class=".col-sm-4">
+            {% for picture in restaurant.pictures.all %}
+            <img class="card-img-top card-img-swiper-restaurant" src="/{{ picture.image }}" alt="{{ picture.name }}">
+            {% endfor %}
         </div>
     </div>
 </div>
