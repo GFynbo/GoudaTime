@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 {% block title %} Matches{% endblock %}
 
 {% block nav-matches %}<a href="#" class="nav-active">Matches</a>{% endblock %}
@@ -34,7 +44,7 @@
                     <a href="/swiper/restaurants/{{match.restaurant.id}}" class="btn btn-success match-button">Open</a>
                 </div>
                 <div class="close-me">
-                    <span id='close' data-toggle="modal" data-target="#myModal" data-rest-pk="{{ match.restaurant.pk }}" data-rest-name="{{ match.restaurant.name }}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></span>
+                    <span id='close' data-toggle="modal" data-target="#myModal" data-rest-pk="{{ match.restaurant.pk }}" data-rest-name="{{ match.restaurant.name }}"><a>{% bootstrap_icon "remove" extra_classes="matches-x-button" %}</a></span>
                 </div>
             </div>
             {% endfor %}

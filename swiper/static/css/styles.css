@@ -416,6 +416,11 @@ PROFILE
     font-size: 1.5rem;
 }
 
+.profile-icon {
+    margin-top: 50px;
+    font-size: 150px;
+}
+
 /*
 *****************
 SWIPER - HOME
@@ -483,4 +488,8 @@ MATCHES PAGE
 .input-group-addon {
     min-width: 100px;
     text-align: left;
+}
+
+.matches-x-button {
+    font-size: 2rem;
 }

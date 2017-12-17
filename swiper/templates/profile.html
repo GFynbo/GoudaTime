@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 {% block title %} {{ user.username }}{% endblock %}
 
 {% block nav-profile %}<a href="#" class="nav-active">Profile</a>{% endblock %}
@@ -18,8 +28,8 @@
 
 <div class="container container-full">
     <div class="row">
-        <img class="profile-pic" src="/{{ user.profile_pic }}" alt="" />
-        <h1>{{ user.username }}<a href="#" class="small-edit-profile" data-toggle="modal" data-target="#myModal">(edit)</a></h1>
+        {% bootstrap_icon "user" extra_classes="profile-icon" %}
+        <h1>{{ user.username }}<a href="#" class="small-edit-profile" data-toggle="modal" data-target="#myModal"> {% bootstrap_icon "pencil" %}</a></h1>
     </div>
     <div class="row">
         <div class="card-group swiper-row">

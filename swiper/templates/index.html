@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
 {% block title %} Home{% endblock %}
 
 {% load static %}
 {% block nav-home %}<a href="#" class="nav-active">Home</a>{% endblock %}
 {% block content %}
-<h2>Find a Gouda restaurant...</h2>
 <div class="card-group swiper-row">
     {% if restaurant %}
+        <h2>Find a Gouda restaurant...</h2>
         <div class="card swiper-card">
             {% for picture in restaurant.pictures.all %}
             <img class="card-img-top card-img-swiper" src="/{{ picture.image }}" alt="{{ picture.name }}">
@@ -34,7 +44,9 @@
             </div>
         </div>
     {% else %}
-    <p>No restaurants are available.</p>
+    {% bootstrap_icon "globe" extra_classes="profile-icon"%}
+    <h2>Can't find a Gouda restaurant 🧐</h2>
+    <p>No restaurants are available nearby.</p>
     {% endif %}
 </div>
 
