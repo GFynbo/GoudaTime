@@ -5,3 +5,4 @@ psycopg2==2.7.3.1
 whitenoise==3.3.1
 Pillow >= 2.0.0
 django-bootstrap3 >= 9.0
+django-map-widgets >= 0.1.9
