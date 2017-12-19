@@ -6,6 +6,7 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 
 ## Tasks & Goals
 ### TODOS
+* **Fix styling to allow google maps to be the background on the index page**
 * Re-organize the models AND forms into individual files for aesthetics and styles
 * Force matches into all being the same size (picture, text, height, width etc) and center
 * Get user's current location and update their profile/model instance <--- IMPORTANT
