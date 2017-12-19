@@ -10,6 +10,7 @@ body {
   color: #000;
   background-color: #202020;
   min-height: 100vh;
+  z-index: 0;
 }
 
 h1 {
@@ -175,6 +176,7 @@ NAVIGATION
   padding: 15px;
   border-radius: 3px;
   /*border: 1px solid black;*/
+  z-index: 1;
   width: 50%;
   margin: 0 auto;
   float: none;
@@ -183,6 +185,7 @@ NAVIGATION
 
 .swiper-row {
   margin: 0 auto;
+  margin-bottom: 100px;
   float: none;
   width: 100%;
 }
@@ -193,6 +196,7 @@ NAVIGATION
 }
 
 .jumbotron {
+    padding: 0;
     background: linear-gradient(to top right, #fff, #eee);
 }
 
@@ -214,16 +218,13 @@ NAVIGATION
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     background-color: #202020;
     color: white;
-    padding-top: 15px;
+    padding-top: 20px;
     padding-bottom: 5px;
-}
-
-.jumbotron {
-    padding-bottom: 0;
+    width: 100%;
 }
 
 
@@ -549,7 +550,7 @@ MAP - INDEX
 #cant-find-restaurant {
     position: relative;
     z-index: 1;
-    height: 90vh;
+    /*height: 90vh;*/
     display: flex;
     align-items: center;
 }
@@ -567,5 +568,10 @@ MAP - INDEX
     z-index: 0;
     height: 100vh;
     width: 100%;
-    margin: 0 auto;
+    background-color: none;
+}
+
+.find-restaurant {
+    position: relative;
+    z-index: 1;
 }

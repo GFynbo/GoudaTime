@@ -14,8 +14,8 @@
 {% block nav-home %}<a href="#" class="nav-active">{% bootstrap_icon "home" %} Home</a>{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="card-group swiper-row">
         {% if restaurant %}
+        <div class="card-group swiper-row find-restaurant">
             <h2>Find a Gouda restaurant...</h2>
             <div class="card swiper-card">
                 {% for picture in restaurant.pictures.all %}
@@ -42,14 +42,12 @@
                     </form>
                 </div>
             </div>
+        </div>
         {% else %}
         <div id="cant-find-restaurant">
             <h2 class="center-me">Can't find a Gouda restaurant 🧐</h2>
         </div>
         {% endif %}
-    </div>
-</div>
-
         <div id="map"></div>
         <script>
           // Note: This example requires that you consent to location sharing when
@@ -327,5 +325,5 @@
           }
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb0uKg9UiRd2ivKVzfP1lcjDq9pGQGt1Y&callback=initMap"></script>
-
+</div>
 {% endblock %}
