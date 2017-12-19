@@ -21,6 +21,8 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 
 ### BIG TODOS
 * **Dynamically load restaurants from surrounding area**
+    * Google maps implemented but need to use current (geolocation) to get and store the data into the user models
+    * Also need to convert latitude and longetude to street address to allow the user to better understand where they are
 * Allow group matching to help people decide on a place to eat together
 
 ---
