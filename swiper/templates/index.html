@@ -13,6 +13,7 @@
 {% load static %}
 {% block nav-home %}<a href="#" class="nav-active">{% bootstrap_icon "home" %} Home</a>{% endblock %}
 {% block content %}
+<div class="container">
     <div class="card-group swiper-row">
         {% if restaurant %}
             <h2>Find a Gouda restaurant...</h2>
@@ -61,6 +62,7 @@
               center: {lat: 40.7128, lng: -74.0060},
               zoom: 12,
               draggable: false,
+              disableDefaultUI: true,
               styles: [
                           {
                             "elementType": "geometry",
@@ -325,6 +327,5 @@
           }
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb0uKg9UiRd2ivKVzfP1lcjDq9pGQGt1Y&callback=initMap"></script>
-<div class="container container-full">
 
 {% endblock %}
