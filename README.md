@@ -19,7 +19,7 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 * ~~Switch to postgresql from sqlite3~~
 
 ### BIG TODOS
-* *Dynamically load restaurants from surrounding area*
+* **Dynamically load restaurants from surrounding area**
 * Allow group matching to help people decide on a place to eat together
 
 ---

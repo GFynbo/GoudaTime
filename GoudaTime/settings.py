@@ -29,7 +29,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
-MAPS_KEY=os.environ.get("MAPS_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mapwidgets',
     'bootstrap3',
 ]
 
@@ -114,17 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-# for the google maps api
-MAP_WIDGETS = {
-    "GooglePointFieldWidget": (
-        ("zoom", 15),
-        ("mapCenterLocationName", "boston"),
-        ("GooglePlaceAutocompleteOptions", {'componentRestrictions': {'country': 'usa'}}),
-        ("markerFitZoom", 12),
-    ),
-    "GOOGLE_MAP_API_KEY": "MAPS_KEY"
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

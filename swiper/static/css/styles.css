@@ -541,3 +541,12 @@ MATCHES PAGE
     text-decoration: none;
     color: black;
 }
+
+/*****************
+MAP - INDEX
+******************/
+
+#map {
+    height: 400px;
+    width: 100%;
+}
