@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
-from swiper.models import Match, MatchManager, Restaurant
+from swiper.models import Match, MatchManager, Restaurant, UserProfile
 
 
 class SignUpForm(UserCreationForm):

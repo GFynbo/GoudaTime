@@ -8,7 +8,24 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 
-# Create your models here.
+# GoudaTime models!
+
+class UserProfile(models.Model):
+    """
+    Model with OneToOne field for extending the default users
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=40.7128)
+    location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-74.0060)
+
+
+def create_profile(sender, **kwargs):
+    user = kwargs["instance"]
+    if kwargs["created"]:
+        user_profile = UserProfile(user=user)
+        user_profile.save()
+post_save.connect(create_profile, sender=User)
+
 class Picture(models.Model):
     """
     Model to hold multiple pictures for a restaurant.
