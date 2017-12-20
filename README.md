@@ -29,6 +29,12 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 
 ## Local development
 
+### Requirements
+* Python 3
+* pip
+* postgresql or sqlite (if you get sqlite you need to change the data schema see step 5b)
+* a hardworking attitude!
+
 To run this project in your development machine, follow these steps:
 
 1. (optional) Create and activate a virtualenv (you may want to use virtualenvwrapper).
@@ -48,17 +54,46 @@ git clone https://github.com/GFynbo/GoudaTime.git
 pip install -r requirements.txt
 ~~~
 
-6. Create a development database:
+6. Create a .env file under the /GoudaTime/ folder (inside the project folder i.e. GoudaTime/GoudaTime) that contains the environment variables
+~~~
+SECRET_KEY='SECRET_KEY_HERE'
+DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
+~~~
+
+    * Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from:
+    ~~~
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'DATABASE_NAME',
+            'USER': 'USERNAME',
+            'PASSWORD': DATABASE_PASSWORD,
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+    ~~~
+    To
+    ~~~
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+        }
+    }
+    ~~~
+
+7. Create a development database:
 ~~~
 ./manage.py migrate
 ~~~
 
-7. If everything is alright, you should be able to start the Django development server:
+8. If everything is alright, you should be able to start the Django development server:
 ~~~
 ./manage.py runserver
 ~~~
 
-8. Open your browser and go to http://127.0.0.1:8000, you will be greeted with a welcome page.
+9. Open your browser and go to http://127.0.0.1:8000, you will be greeted with a welcome page.
 
 ---
 
