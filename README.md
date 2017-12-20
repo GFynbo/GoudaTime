@@ -55,10 +55,11 @@ pip install -r requirements.txt
 ~~~
 
 6. Create a .env file under the /GoudaTime/ folder (inside the project folder i.e. GoudaTime/GoudaTime) that contains the environment variables
-~~~
-SECRET_KEY='SECRET_KEY_HERE'
-DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
-~~~
+    ~~~
+    SECRET_KEY='SECRET_KEY_HERE'
+    DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
+    ~~~
+    
     1. Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from
 
     ~~~
@@ -75,7 +76,7 @@ DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
     ~~~
 
     To
-    
+
     ~~~
     DATABASES = {
         'default': {
