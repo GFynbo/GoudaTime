@@ -32,7 +32,7 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 ### Requirements
 * Python 3
 * pip
-* postgresql or sqlite (if you get sqlite you need to change the data schema see step 5b)
+* postgresql or sqlite (if you get sqlite you need to change the data schema see step 6)
 * a hardworking attitude!
 
 To run this project in your development machine, follow these steps:
@@ -60,7 +60,7 @@ SECRET_KEY='SECRET_KEY_HERE'
 DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
 ~~~
 
-    * Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from:
+    **1:** Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from
     ~~~
     DATABASES = {
         'default': {
