@@ -195,15 +195,6 @@ NAVIGATION
     border: 1px solid #124B52;
 }
 
-.jumbotron {
-    padding: 0;
-    background: linear-gradient(to top right, #fff, #eee);
-}
-
-.jumbotron h1, .jumbotron .h1 {
-    color: #000;
-}
-
 .card-img-top {
   background-image: url("../img/rest.jpg");
   width: 100%;
@@ -218,13 +209,14 @@ NAVIGATION
 }
 
 .footer {
-    position: absolute;
+    position: relative;
+    right: 0;
     bottom: 0;
+    left: 0;
+    padding: 1rem;
     background-color: #202020;
+    text-align: center;
     color: white;
-    padding-top: 20px;
-    padding-bottom: 5px;
-    width: 100%;
 }
 
 
@@ -232,11 +224,18 @@ NAVIGATION
 .login-please {
     padding-bottom: 20px;
 }
+
+.container-swiper {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
 .container-full {
     margin: 0;
-    min-height: 80vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to top right, #fff, #eee);
 }
 .row-full {
     flex: 1;
@@ -562,11 +561,11 @@ MAP - INDEX
 
 #map {
     position: absolute;
-    opacity: 0.5;
+    opacity: 0.75;
     top: 0;
     left: 0;
     z-index: 0;
-    height: 100vh;
+    height: 110vh;
     width: 100%;
     background-color: none;
 }
