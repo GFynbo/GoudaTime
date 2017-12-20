@@ -63,11 +63,25 @@ class Restaurant(models.Model):
         """
         return str(self.name)
 
+class LocationManager(models.Manager):
+    """
+    This is the manager class for the location system for keeping track of where restaurants are.
+    """
+
+    def get_location(restaurant):
+        # get matches for the match page
+        restaurant = Match.objects.get(restaurant)
+        return restaurant
+
+    def add_location(restaurant, location_lat, location_lon):
+        new_location = Location(restaurant=restaurant, location_lat=location_lat, location_lon=location_lon)
+        new_location.save()
+
 class Location(models.Model):
     """
     Location model to store the location of a restaurant and have a relationship with that restaurant
     """
-    restaurant = models.UUIDField(default=uuid.uuid4)
+    restaurant = models.ForeignKey(Restaurant, related_name="location_rest")
     location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=40.7128)
     location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-74.0060)
 
