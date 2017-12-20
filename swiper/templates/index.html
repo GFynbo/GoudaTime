@@ -56,14 +56,30 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h3>Find Me</h3>
                     </div>
-                    <form id="update-user-form" action="/swiper/update-profile/" method="post" role="form" style="display: block;">
-                        {% csrf_token %}
-                        <div id="floating-panel">
-                          <input id="address" type="textbox" value="Sydney, NSW">
-                          <button type="button" id="submit" class="btn btn-primary" name="Geocode" value="Geocode">Find me</button
+                    <div class="modal-body">
+                        <div class="form-inline">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="sizing-addon1">Address</span>
+                                <input id="address" type="text" class="form-control" aria-describedby="sizing-addon1"  placeholder="Boston, MA">
+                            </div>
+                            <div class="input-group input-group-lg">
+                                <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode">Find me</button>
+                            </div>
                         </div>
+                    </div>
+                    <div class="modal-body">
                         <div id="map"></div>
-                    </form>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update-user-form" action="" method="" class="form-inline" role="form">
+                            {% csrf_token %}
+                            <p>Is this correct?</p>
+                            <div class="input-group input-group-lg">
+                                <button type="submit" class="btn btn-success">Save</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,8 +109,9 @@
             resultsMap.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
               map: resultsMap,
-              position: results[0].geometry.location
+              position: results[0].geometry.location,
             });
+            resultsMap.setZoom(14);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
@@ -102,9 +119,9 @@
       }
 
     $('#findMeModal').on('shown.bs.modal', function() {
-            google.maps.event.trigger(map, "resize");
+            initMap();
         });
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb0uKg9UiRd2ivKVzfP1lcjDq9pGQGt1Y&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb0uKg9UiRd2ivKVzfP1lcjDq9pGQGt1Y&callback="></script>
 </div>
 {% endblock %}
