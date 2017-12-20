@@ -551,3 +551,7 @@ MATCHES PAGE
 /*****************
 MAP - INDEX
 ******************/
+
+#map {
+    height: 400px;
+}

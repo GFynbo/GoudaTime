@@ -11,6 +11,7 @@
 {% bootstrap_messages %}
 {% block title %} Home{% endblock %}
 {% load static %}
+
 {% block nav-home %}<a href="#" class="nav-active">{% bootstrap_icon "home" %} Home</a>{% endblock %}
 {% block content %}
 <div class="container container-swiper">
@@ -47,15 +48,63 @@
     {% else %}
     <div id="cant-find-restaurant">
         <h2 class="center-me">Can't find a Gouda restaurant 🧐</h2>
+        <p><a href="#" class="small-edit-profile" data-toggle="modal" data-target="#findMeModal"> {% bootstrap_icon "map-marker" %}</a></p>
+        <div class="modal fade" id="findMeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3>Find Me</h3>
+                    </div>
+                    <form id="update-user-form" action="/swiper/update-profile/" method="post" role="form" style="display: block;">
+                        {% csrf_token %}
+                        <div id="floating-panel">
+                          <input id="address" type="textbox" value="Sydney, NSW">
+                          <button type="button" id="submit" class="btn btn-primary" name="Geocode" value="Geocode">Find me</button
+                        </div>
+                        <div id="map"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     {% endif %}
-    <div id="map"></div>
     <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
-        </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb0uKg9UiRd2ivKVzfP1lcjDq9pGQGt1Y&callback=initMap"></script>
-    </div>
-    {% endblock %}
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: 40.7128, lng: -74.0060}
+      });
+      var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    $('#findMeModal').on('shown.bs.modal', function() {
+            google.maps.event.trigger(map, "resize");
+        });
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb0uKg9UiRd2ivKVzfP1lcjDq9pGQGt1Y&callback=initMap"></script>
+</div>
+{% endblock %}
