@@ -63,6 +63,14 @@ class Restaurant(models.Model):
         """
         return str(self.name)
 
+class Location(models.Model):
+    """
+    Location model to store the location of a restaurant and have a relationship with that restaurant
+    """
+    restaurant = models.UUIDField(default=uuid.uuid4)
+    location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=40.7128)
+    location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-74.0060)
+
 class MatchManager(models.Manager):
     """
     This is the manager class for the match system for creating users and helpful
