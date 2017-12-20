@@ -59,8 +59,8 @@ pip install -r requirements.txt
 SECRET_KEY='SECRET_KEY_HERE'
 DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
 ~~~
+    1. Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from
 
-    **1:** Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from
     ~~~
     DATABASES = {
         'default': {
@@ -73,7 +73,9 @@ DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
         }
     }
     ~~~
+
     To
+    
     ~~~
     DATABASES = {
         'default': {
