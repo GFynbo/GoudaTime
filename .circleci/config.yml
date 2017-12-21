@@ -9,10 +9,10 @@ jobs:
       # specify the version you desire here
       # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
       - image: circleci/python:3.6.1
-      - image: postgres:9.5
+      - image: circleci/postgres:9.6.2
         environment:
-        - POSTGRES_USER=goudatime
-        - POSTGRES_DB=gouda
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -55,7 +55,6 @@ jobs:
           destination: test-reports
 
       - run:
-          name: Set up DB
-          command: manage.py migrate
-        environment:
-          DATABASE_URL: "postgres://ubuntu@localhost:5432/gouda"
+          command: |
+            . venv/bin/activate
+            python3 manage.py migrate
