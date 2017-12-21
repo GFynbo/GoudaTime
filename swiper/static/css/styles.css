@@ -105,7 +105,7 @@ NAVIGATION
 
 .navbar-inverse .navbar-nav > li > a.nav-active {
     color: black;
-    border-bottom: 2px solid black;
+    border-bottom: 4px solid black;
 }
 
 /**
