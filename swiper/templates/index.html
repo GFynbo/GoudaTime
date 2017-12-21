@@ -44,10 +44,8 @@
     {% else %}
     <div id="cant-find-restaurant">
         <h2 class="center-me">Can't find a Gouda restaurant 🧐</h2>
-        <p>{{ user.profile.address }}</p>
-        <p>{{ user.profile.location_lat }}</p>
-        <p>{{ user.profile.location_lon }}</p>
-        <p><a href="#" class="small-edit-profile" data-toggle="modal" data-target="#findMeModal"> {% bootstrap_icon "map-marker" %}</a></p>
+        <p><a href="#" class="small-edit-profile" data-toggle="modal" data-target="#findMeModal">{% bootstrap_icon "map-marker" %} {{ user.profile.address }}</a></p>
+        <p></p>
         <div class="modal fade" id="findMeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -96,6 +94,10 @@
         zoom: 14,
         center: {lat: {% if user.profile.location_lat %}{{ user.profile.location_lat }}{% else %}40.7128{% endif %}, lng: {% if user.profile.location_lon %}{{ user.profile.location_lon }}{% else %}-74.0060{% endif %}},
         disableDefaultUI: true
+      });
+      var marker = new google.maps.Marker({
+        map: map,
+        position: map.center,
       });
       var geocoder = new google.maps.Geocoder();
 
