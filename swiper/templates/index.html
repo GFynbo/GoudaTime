@@ -59,7 +59,7 @@
                         <div class="form-inline">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon" id="sizing-addon1">Address</span>
-                                <input id="address" name="address" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Boston, MA" value="{{ user.profile.address }}">
+                                <input id="address" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Boston, MA" value="{{ user.profile.address }}">
                                 <span class="input-group-btn">
                                     <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode">Find me</button>
                                 </span>
@@ -70,10 +70,11 @@
                         <div id="map"></div>
                     </div>
                     <div class="modal-body">
-                        <form id="update-user-location-form" action="/swiper/update-location/" method="post" class="form-inline">
+                        <form action="/swiper/update-location/" method="post" class="form-inline">
                             {% csrf_token %}
-                            <input id="location_lat" name="location_lat" type="hidden" value="">
-                            <input id="location_lon" name="location_lon" type="hidden" value="">
+                            <input id="user-lat" name="location_lat" type="hidden" value="">
+                            <input id="user-lon" name="location_lon" type="hidden" value="">
+                            <input id="user-add" name="address" type="hidden" value="">
                             <div class="input-group input-group-lg">
                                 <button type="submit" class="btn btn-success">Save</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
@@ -92,7 +93,7 @@
     // locate you.
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 8,
+        zoom: 14,
         center: {lat: {% if user.profile.location_lat %}{{ user.profile.location_lat }}{% else %}40.7128{% endif %}, lng: {% if user.profile.location_lon %}{{ user.profile.location_lon }}{% else %}-74.0060{% endif %}},
         disableDefaultUI: true
       });
@@ -108,9 +109,9 @@
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
-            console.log(results[0].geometry.location);
-            document.getElementById('location_lat').value = (results[0].geometry.location.lat());
-            document.getElementById('location_lon').value = (results[0].geometry.location.lng());
+            document.getElementById('user-lat').value = (results[0].geometry.location.lat()).toFixed([6]);
+            document.getElementById('user-lon').value = (results[0].geometry.location.lng()).toFixed([6]);
+            document.getElementById('user-add').value = document.getElementById('address').value;
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location,

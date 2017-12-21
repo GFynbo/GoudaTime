@@ -7,12 +7,18 @@ from swiper.models import Match, MatchManager, Restaurant, UserProfile
 
 
 class SignUpForm(UserCreationForm):
+    """
+    Form for registering the user in the system.
+    """
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2', )
 
 class MatchRestaurantForm(forms.Form):
+    """
+    Add a restaurant match between a user and a restaurant in a bi-directional relationship
+    """
     restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
 
     def save(self, user):
@@ -24,6 +30,10 @@ class MatchRestaurantForm(forms.Form):
             MatchManager.add_match(user=curr_user, restaurant=restaurant)
 
 class RemoveRestaurantForm(forms.Form):
+    """
+    Form to add a denial between a user and a restaurant in the same bi-directional
+    relationship listed above
+    """
     restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
 
     def save(self, user, deny=True):
@@ -35,6 +45,9 @@ class RemoveRestaurantForm(forms.Form):
             MatchManager.add_match(user=curr_user, restaurant=restaurant, deny=deny)
 
 class RemoveMatchForm(forms.Form):
+    """
+    Remove the match from the list of matches with a relationship to the user
+    """
     restaurant_id = forms.UUIDField(help_text="Enter the restaurant id.", required=True)
 
     def save(self, user):
@@ -47,6 +60,9 @@ class RemoveMatchForm(forms.Form):
         rest.save()
 
 class UpdateProfile(forms.ModelForm):
+    """
+    Update the information of the user and change it in the system
+    """
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=False, max_length=50)
     last_name = forms.CharField(required=False, max_length=50)
@@ -65,8 +81,11 @@ class UpdateProfile(forms.ModelForm):
             user.save()
 
 class UpdateLocation(forms.ModelForm):
-    location_lat = forms.DecimalField(required=True)
-    location_lon = forms.DecimalField(required=True)
+    """
+    Updates/sets the location of a given user on the homepage
+    """
+    location_lat = forms.DecimalField(required=True, max_digits=9, decimal_places=6)
+    location_lon = forms.DecimalField(required=True, max_digits=9, decimal_places=6)
     address = forms.CharField(required=True, max_length=125)
 
     class Meta:

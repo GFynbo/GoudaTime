@@ -107,7 +107,7 @@ def update_profile(request):
             return redirect('Profile')
     else:
         form = UpdateProfile()
-    return render(request, 'profile.html', args)
+    return redirect('Profile')
 
 @login_required
 def update_location(request):
@@ -115,11 +115,12 @@ def update_location(request):
     if request.method == 'POST':
         form = UpdateLocation(request.POST)
         if form.is_valid():
+            print("Form is valid!")
             form.save(request.user)
             return redirect('index')
     else:
         form = UpdateLocation()
-    return render(request, 'index.html', args)
+    return redirect('index')
 
 @login_required
 def matches(request):
