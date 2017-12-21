@@ -56,6 +56,6 @@ jobs:
 
       - run:
           name: Set up DB
-          command: migrate
+          command: manage.py migrate
         environment:
           DATABASE_URL: "postgres://ubuntu@localhost:5432/gouda"
