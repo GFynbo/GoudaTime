@@ -26,6 +26,12 @@ NAVIGATION
 *******************
 */
 
+.navbar-brand img {
+    height: 100%;
+    padding: 15px;
+    width: auto;
+}
+
 .navbar-gouda {
     background-color: #124B52;
     margin: 0;

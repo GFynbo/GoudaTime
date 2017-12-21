@@ -9,7 +9,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{% static 'img/GoudaBlack.png' %}">
 
     <title>GoudaTime | {% block title %}{% endblock %}</title>
 
@@ -30,37 +30,43 @@
 
 <body>
     {% block nav %}
-    <nav class="navbar navbar-inverse navbar-gouda">
-        <div class="container">
-            <form class="navbar-form navbar-left">
-                <div class="navbar-header">
-                        <a class="navbar-brand navbar-thicc" href="/swiper">GT</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    {% if user.is_authenticated %}
-                    <li>{% block nav-home %}<a href="/swiper/">{% bootstrap_icon "home" %} Home</a>{% endblock %}</li>
-                    <li>{% block nav-matches %}<a href="/swiper/matches" >Matches</a>{% endblock %}</li>
-                    <li class="profile">{% block nav-profile %}<a href="/swiper/profile/">Profile</a>{% endblock %}</li>
-                    {% endif %}
-                    <li>{% block nav-about %}<a href="/swiper/about">About</a>{% endblock %}</li>
-                </ul>
-            </form>
-            <form class="navbar-form navbar-right">
-
-                {% if user.is_authenticated %}
-                <ul class="nav navbar-nav">
-                    <li class="navbar-button-right"><a href="/swiper/profile/">{% bootstrap_icon "user" %} {{user.username}}</a></li>
-                    <li><a href="/accounts/logout">Logout</a></li>
-                </ul>
-                {% else %}
-                <ul class="nav navbar-nav navbar-right-buttons">
-                    <li class="navbar-button-right"><a href="/accounts/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log in</a></li>
-                    <li class=""><a href="/swiper/signup">Sign up</a></li>
-                </ul>
-                {% endif %}
-            </form>
+        <div class="container-full">
+            <nav class="navbar navbar-inverse navbar-gouda">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button>
+                            <a href="/swiper/" class="navbar-brand"><img src="{% static 'img/GoudaBlack.png' %}" alt="GoudaTime"></a>
+                    </div>
+                    <div id="navbar1" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            {% if user.is_authenticated %}
+                            <li>{% block nav-home %}<a href="/swiper/">{% bootstrap_icon "home" %} Home</a>{% endblock %}</li>
+                            <li>{% block nav-matches %}<a href="/swiper/matches" >Matches</a>{% endblock %}</li>
+                            <li class="profile">{% block nav-profile %}<a href="/swiper/profile/">Profile</a>{% endblock %}</li>
+                            {% endif %}
+                            <li>{% block nav-about %}<a href="/swiper/about">About</a>{% endblock %}</li>
+                        </ul>
+                        {% if user.is_authenticated %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="navbar-button-right"><a href="/swiper/profile/">{% bootstrap_icon "user" %} {{user.username}}</a></li>
+                            <li><a href="/accounts/logout">Logout</a></li>
+                        </ul>
+                        {% else %}
+                        <ul class="nav navbar-nav navbar-right-buttons">
+                            <li class="navbar-button-right"><a href="/accounts/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Log in</a></li>
+                            <li class=""><a href="/swiper/signup">Sign up</a></li>
+                        </ul>
+                        {% endif %}
+                    </div>
+            </div>
+            </nav>
         </div><!--/.navbar-collapse -->
-    </nav>
+
     {% endblock %}
 
     {% block content %}<!-- default content text (typically empty) -->{% endblock %}
