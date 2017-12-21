@@ -555,3 +555,7 @@ MAP - INDEX
 #map {
     height: 400px;
 }
+
+.location-edit-link {
+    font-size: 2rem;
+}
