@@ -63,3 +63,21 @@ class UpdateProfile(forms.ModelForm):
 
         if commit:
             user.save()
+
+class UpdateLocation(forms.ModelForm):
+    location_lat = forms.DecimalField(required=True)
+    location_lon = forms.DecimalField(required=True)
+    address = forms.CharField(required=True, max_length=125)
+
+    class Meta:
+        model = UserProfile
+        fields = ('location_lat', 'location_lon', 'address')
+
+    def save(self, user, commit=True):
+        user = User.objects.get(pk=user.pk)
+        user.profile.location_lat = self.cleaned_data['location_lat']
+        user.profile.location_lon = self.cleaned_data['location_lon']
+        user.profile.address = self.cleaned_data['address']
+
+        if commit:
+            user.profile.save()

@@ -3,10 +3,6 @@
 {# Load the tag library #}
 {% load bootstrap3 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 {% block title %} Home{% endblock %}
@@ -48,19 +44,22 @@
     {% else %}
     <div id="cant-find-restaurant">
         <h2 class="center-me">Can't find a Gouda restaurant 🧐</h2>
+        <p>{{ user.profile.address }}</p>
+        <p>{{ user.profile.location_lat }}</p>
+        <p>{{ user.profile.location_lon }}</p>
         <p><a href="#" class="small-edit-profile" data-toggle="modal" data-target="#findMeModal"> {% bootstrap_icon "map-marker" %}</a></p>
         <div class="modal fade" id="findMeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3>Update location</h3>
+                        <h3>Update your location</h3>
                     </div>
                     <div class="modal-body">
                         <div class="form-inline">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon" id="sizing-addon1">Address</span>
-                                <input id="address" type="text" class="form-control" aria-describedby="sizing-addon1"  placeholder="Boston, MA">
+                                <input id="address" name="address" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Boston, MA" value="{{ user.profile.address }}">
                                 <span class="input-group-btn">
                                     <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode">Find me</button>
                                 </span>
@@ -71,9 +70,10 @@
                         <div id="map"></div>
                     </div>
                     <div class="modal-body">
-                        <form id="update-user-form" action="" method="" class="form-inline" role="form">
+                        <form id="update-user-location-form" action="/swiper/update-location/" method="post" class="form-inline">
                             {% csrf_token %}
-                            <p>Is this correct?</p>
+                            <input id="location_lat" name="location_lat" type="hidden" value="">
+                            <input id="location_lon" name="location_lon" type="hidden" value="">
                             <div class="input-group input-group-lg">
                                 <button type="submit" class="btn btn-success">Save</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
@@ -93,11 +93,12 @@
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
-        center: {lat: 40.7128, lng: -74.0060}
+        center: {lat: {% if user.profile.location_lat %}{{ user.profile.location_lat }}{% else %}40.7128{% endif %}, lng: {% if user.profile.location_lon %}{{ user.profile.location_lon }}{% else %}-74.0060{% endif %}},
+        disableDefaultUI: true
       });
       var geocoder = new google.maps.Geocoder();
 
-        document.getElementById('submit').addEventListener('click', function() {
+      document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
       }
@@ -107,6 +108,9 @@
         geocoder.geocode({'address': address}, function(results, status) {
           if (status === 'OK') {
             resultsMap.setCenter(results[0].geometry.location);
+            console.log(results[0].geometry.location);
+            document.getElementById('location_lat').value = (results[0].geometry.location.lat());
+            document.getElementById('location_lon').value = (results[0].geometry.location.lng());
             var marker = new google.maps.Marker({
               map: resultsMap,
               position: results[0].geometry.location,
@@ -117,6 +121,7 @@
           }
         });
       }
+
 
     $('#findMeModal').on('shown.bs.modal', function() {
             initMap();

@@ -14,9 +14,10 @@ class UserProfile(models.Model):
     """
     Model with OneToOne field for extending the default users
     """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=40.7128)
-    location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-74.0060)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=42.3601)
+    location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-71.0589)
+    address = models.CharField(max_length=125, default="Boston, MA", help_text='123 Sample St, City ST 90210')
 
 
 def create_profile(sender, **kwargs):
@@ -49,8 +50,10 @@ class Restaurant(models.Model):
 
     name = models.CharField(max_length=100, help_text="Enter the restaurant name (e.g. Santarpio's or Jimmy's Subs)")
 
-    description = models.TextField(max_length=1000, help_text="Enter a brief description of the restaurant")
-    address = models.CharField(max_length=75, help_text='123 Sample St, City ST 90210')
+    description = models.TextField(max_length=1000, default="A generic restaurant.", help_text="Enter a brief description of the restaurant")
+    address = models.TextField(max_length=125, default="Boston, MA", help_text='123 Sample St, City ST 90210')
+    location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=40.7128)
+    location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-74.0060)
 
     hours = models.CharField(max_length=200, help_text="Enter the restaurant hours (e.g. M-F 9-5, Sat 12-5, Sun Closed)")
     pictures = models.ManyToManyField(Picture, help_text="Select pictures for this restaurant")
@@ -63,31 +66,6 @@ class Restaurant(models.Model):
         """
         return str(self.name)
 
-class LocationManager(models.Manager):
-    """
-    This is the manager class for the location system for keeping track of where restaurants are.
-    """
-
-    def get_location(restaurant):
-        # get matches for the match page
-        restaurant = Match.objects.get(restaurant)
-        return restaurant
-
-    def add_location(restaurant, location_lat, location_lon):
-        new_location = Location(restaurant=restaurant, location_lat=location_lat, location_lon=location_lon)
-        new_location.save()
-
-class Location(models.Model):
-    """
-    Location model to store the location of a restaurant and have a relationship with that restaurant
-    """
-    restaurant = models.ForeignKey(Restaurant, related_name="location_rest")
-    street = models.TextField(blank=True)
-    city = models.TextField(blank=True)
-    country = models.TextField(blank=True)
-    zipcode = models.TextField(blank=True)
-    location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=40.7128)
-    location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-74.0060)
 
 class MatchManager(models.Manager):
     """

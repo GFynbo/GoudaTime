@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.template import RequestContext
 
-from swiper.forms import MatchRestaurantForm, RemoveMatchForm, RemoveRestaurantForm, SignUpForm, UpdateProfile
+from swiper.forms import MatchRestaurantForm, RemoveMatchForm, RemoveRestaurantForm, SignUpForm, UpdateLocation, UpdateProfile
 from swiper.models import Match, MatchManager
 
 from .models import Restaurant
@@ -96,6 +96,7 @@ def profile(request):
         context={},
     )
 
+@login_required
 def update_profile(request):
     args = {}
 
@@ -107,6 +108,18 @@ def update_profile(request):
     else:
         form = UpdateProfile()
     return render(request, 'profile.html', args)
+
+@login_required
+def update_location(request):
+    args = {}
+    if request.method == 'POST':
+        form = UpdateLocation(request.POST)
+        if form.is_valid():
+            form.save(request.user)
+            return redirect('index')
+    else:
+        form = UpdateLocation()
+    return render(request, 'index.html', args)
 
 @login_required
 def matches(request):
