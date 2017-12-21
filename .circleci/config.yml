@@ -12,7 +12,7 @@ jobs:
       - image: circleci/postgres:9.6.2
         environment:
           POSTGRES_USER: goudatime
-          POSTGRES_DB: circle_test
+          POSTGRES_DB: gouda
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
