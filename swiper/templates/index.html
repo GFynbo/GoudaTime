@@ -61,8 +61,11 @@
                             <span class="input-group-addon" id="sizing-addon1">Address</span>
                             <input id="address" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Boston, MA" value="{{ user.profile.address }}">
                             <span class="input-group-btn">
-                                <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode">Find me</button>
+                                <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode">Update</button>
                             </span>
+                        </div>
+                        <div class="input-group">
+                            <button id="get-current-location" type="button" class="btn btn-primary" name="Find My Location">Find me!</button>
                         </div>
                     </div>
                 </div>
@@ -124,7 +127,6 @@
           }
         });
       }
-
 
     $('#findMeModal').on('shown.bs.modal', function() {
             initMap();
