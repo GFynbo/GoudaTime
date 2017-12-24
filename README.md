@@ -7,7 +7,8 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 ## Tasks & Goals
 ### TODOS
 * Re-organize the models AND forms into individual files for aesthetics and styles
-* Get user's current location and update their profile/model instance <--- IMPORTANT
+* Trigger button disable on 'get current location' feature of the update location
+* Potentially get a animation like a spinning wheel for the loading of the map
 * Allow uses to add a profile picture (not sure if I want to allow this)
 * Move forms into individual files in one folder
 * ~~Center login/signup buttons on the nav bar~~
@@ -18,6 +19,7 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 * ~~Switch to postgresql from sqlite3~~
 * ~~**Fix styling to allow google maps to be the background on the index page**~~ <--- idea removed
 * ~~Force matches into all being the same size (picture, text, height, width etc) and center~~
+* ~~Get user's current location and update their profile/model instance <--- IMPORTANT~~
 
 ### BIG TODOS
 * **Dynamically load restaurants from surrounding area**
