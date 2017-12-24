@@ -10,6 +10,8 @@ from swiper.forms import MatchRestaurantForm, RemoveMatchForm, RemoveRestaurantF
 from swiper.models import Match, MatchManager
 
 from .models import Restaurant
+from django.conf import settings
+
 
 @login_required
 def index(request):
@@ -42,7 +44,7 @@ def index(request):
     return render(
         request,
         'index.html',
-        context={'restaurant': restaurants},
+        context={'restaurant': restaurants, 'map_key': settings.MAP_KEY},
     )
 
 @login_required
