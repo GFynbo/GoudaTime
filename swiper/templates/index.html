@@ -151,12 +151,21 @@
               }
             });
             resultsMap.setCenter(pos);
+            $("#submit").prop('disabled', false);
+            $("#get-current-location").prop('disabled', false);
+            $("#save").prop('disabled', false);
           }, function() {
             handleLocationError(true, infoWindow, resultsMap.getCenter());
+            $("#submit").prop('disabled', false);
+            $("#get-current-location").prop('disabled', false);
+            $("#save").prop('disabled', false);
           });
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, resultsMap.getCenter());
+          $("#submit").prop('disabled', false);
+          $("#get-current-location").prop('disabled', false);
+          $("#save").prop('disabled', false);
         }
       }
 
@@ -179,8 +188,14 @@
               position: results[0].geometry.location,
             });
             resultsMap.setZoom(14);
+            $("#submit").prop('disabled', false);
+            $("#get-current-location").prop('disabled', false);
+            $("#save").prop('disabled', false);
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
+            $("#submit").prop('disabled', false);
+            $("#get-current-location").prop('disabled', false);
+            $("#save").prop('disabled', false);
           }
         });
       }
