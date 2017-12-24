@@ -57,18 +57,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-inline">
-                        <div class="input-group input-group-lg">
+                        <div class="input-group input-group-lg max-width">
                             <span class="input-group-addon" id="sizing-addon1">Address</span>
                             <input id="address" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Boston, MA" value="{{ user.profile.address }}">
                             <span class="input-group-btn">
-                                <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode">Update</button>
+                                <button type="button" id="submit" class="btn btn-primary btn-lg" name="Geocode" value="Geocode" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing Order">Update</button>
                             </span>
                         </div>
                     </div>
                     <div class="form-inline form-find-me">
                         <div class="input-group">
                             <br>
-                            <button id="get-current-location" type="button" class="btn btn-success" name="Find My Location">My Location {% bootstrap_icon "arrow-right" %}</button>
+                            <button id="get-current-location" type="button" class="btn btn-success" name="Find My Location" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing Order">My Location {% bootstrap_icon "arrow-right" %}</button>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <input id="user-lon" name="location_lon" type="hidden" value="">
                         <input id="user-add" name="address" type="hidden" value="">
                         <div class="input-group input-group-lg">
-                            <button type="submit" class="btn btn-success">Save</button>
+                            <button id="save" type="submit" class="btn btn-success">Save</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
                         </div>
                     </form>
@@ -109,10 +109,16 @@
       var geocoder = new google.maps.Geocoder();
 
       document.getElementById('submit').addEventListener('click', function() {
+          $("#submit").prop('disabled', true);
+          $("#get-current-location").prop('disabled', true);
+          $("#save").prop('disabled', true);
           geocodeAddress(geocoder, map);
         });
 
       document.getElementById('get-current-location').addEventListener('click', function() {
+          $("#submit").prop('disabled', true);
+          $("#get-current-location").prop('disabled', true);
+          $("#save").prop('disabled', true);
           geolocationAddress(geocoder, map);
         });
       }
@@ -183,9 +189,6 @@
             initMap();
         });
 
-    if (window.location.hash == "#update-location") {
-         $('#findMeModal').modal('show');
-    };
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ map_key }}&callback="></script>
 </div>
