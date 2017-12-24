@@ -54,12 +54,13 @@ git clone https://github.com/GFynbo/GoudaTime.git
 pip install -r requirements.txt
 ~~~
 
-6. Create a .env file under the /GoudaTime/ folder (inside the project folder i.e. GoudaTime/GoudaTime) that contains the environment variables
+6. Create a .env file under the /GoudaTime/ folder (inside the project folder i.e. GoudaTime/GoudaTime/) that contains the environment variables including the REQUIRED google maps api key!!
     ~~~
     SECRET_KEY='SECRET_KEY_HERE'
     DATABASE_PASSWORD='DATABASE_PASSWORD_HERE'
+    MAPS_KEY='GOOGLE_MAPS_JAVASCRIPT_API_KEY_HERE'
     ~~~
-    
+
     1. Either keep the existing postgresql schema for the database or switch to a local sqlite3 which can be done by chanding the settings from
 
     ~~~
