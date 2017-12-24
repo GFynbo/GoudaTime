@@ -565,3 +565,7 @@ MAP - INDEX
 .location-edit-link {
     font-size: 2rem;
 }
+
+.form-find-me {
+    padding-top: 1rem;
+}
