@@ -117,7 +117,6 @@ def update_location(request):
     if request.method == 'POST':
         form = UpdateLocation(request.POST)
         if form.is_valid():
-            print("Form is valid!")
             form.save(request.user)
             return redirect('index')
     else:
