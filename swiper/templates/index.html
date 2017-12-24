@@ -67,6 +67,7 @@
                     </div>
                     <div class="form-inline form-find-me">
                         <div class="input-group">
+                            <br>
                             <button id="get-current-location" type="button" class="btn btn-success" name="Find My Location">My Location {% bootstrap_icon "arrow-right" %}</button>
                         </div>
                     </div>
@@ -94,6 +95,7 @@
     // prompted by your browser. If you see the error "The Geolocation service
     // failed.", it means you probably did not give permission for the browser to
     // locate you.
+
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
@@ -180,6 +182,10 @@
     $('#findMeModal').on('shown.bs.modal', function() {
             initMap();
         });
+
+    if (window.location.hash == "#update-location") {
+         $('#findMeModal').modal('show');
+    };
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ map_key }}&callback="></script>
 </div>
