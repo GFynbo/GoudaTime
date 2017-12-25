@@ -439,6 +439,15 @@ PROFILE
     font-size: 150px;
 }
 
+.text-right {
+    text-align: left;
+}
+
+.profile-card {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
 /*
 *****************
 SWIPER - HOME

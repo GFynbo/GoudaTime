@@ -22,10 +22,10 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 * [x] ~~Trigger button disable on 'get current location' feature of the update location~~
 
 ### BIG TODOS
-* **Dynamically load restaurants from surrounding area**
+* [ ] **Dynamically load restaurants from surrounding area**
     * [x] ~~Google maps implemented but need to use current (geolocation) to get and store the data into the user models~~
-    * [ ] Also need to convert latitude and longitude to street address to allow the user to better understand where they are
-* Allow group matching to help people decide on a place to eat together
+    * [x] ~~Also need to convert latitude and longitude to street address to allow the user to better understand where they are~~
+* [ ] Allow group matching to help people decide on a place to eat together
 
 ---
 
