@@ -6,10 +6,10 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 
 ## Tasks & Goals
 ### TODOS
-* [ ] Re-organize the models AND forms into individual files for aesthetics and styles
 * [ ] Potentially get a animation like a spinning wheel for the loading of the map
 * [ ] Allow uses to add a profile picture (not sure if I want to allow this)
 * [ ] Move forms into individual files in one folder
+* [x] ~~Re-organize the models AND forms into individual files for aesthetics and styles~~
 * [x] ~~Center login/signup buttons on the nav bar~~
 * [x] ~~Show active page on the navbar~~
 * [x] ~~Remove 'Deny' model and implement single field in Match to determine whether its a match or deny~~
