@@ -25,6 +25,8 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 * [ ] **Dynamically load restaurants from surrounding area**
     * [x] ~~Google maps implemented but need to use current (geolocation) to get and store the data into the user models~~
     * [x] ~~Also need to convert latitude and longitude to street address to allow the user to better understand where they are~~
+    * [ ] Use a spatial database such as postgis to manipulate the proximity features for displaying closest locations
+    * [ ] Figure out how to use the JSON return from the Google Places API to import models into the database
 * [ ] Allow group matching to help people decide on a place to eat together
 
 ---
