@@ -580,3 +580,10 @@ MAP - INDEX
 
 .max-width {
 }
+
+.location-edit-link-small-right {
+}
+
+.location-edit-link-small-right a {
+    font-size: 1.5rem;
+}

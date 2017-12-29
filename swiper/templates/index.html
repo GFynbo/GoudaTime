@@ -12,8 +12,8 @@
 {% block content %}
 <div class="container container-swiper">
     {% if restaurant %}
-    <p><a href="#" class="small-edit-profile location-edit-link" data-toggle="modal" data-target="#findMeModal">{% bootstrap_icon "map-marker" %} {{ user.profile.address }}</a></p>
     <div class="row swiper-main">
+        <p class="location-edit-link-small-right"><a href="#" class="small-edit-profile location-edit-link" data-toggle="modal" data-target="#findMeModal">{% bootstrap_icon "map-marker" %} {{ user.profile.address|truncatechars:30 }}</a></p>
         <div class="card-group">
             <div class="card swiper-card">
                 {% for picture in restaurant.pictures.all %}
