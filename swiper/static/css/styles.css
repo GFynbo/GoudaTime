@@ -182,13 +182,13 @@ NAVIGATION
 
 .swiper-card {
   background: #fff;
-  padding: 15px;
   border-radius: 3px;
   /*border: 1px solid black;*/
   z-index: 1;
   width: 30%;
   min-width: 200px;
   margin: 0 auto;
+  padding-bottom: 15px;
   float: none;
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
@@ -204,12 +204,13 @@ NAVIGATION
 }
 
 .card-img-swiper {
-    border-radius: 5px;
-    border: 1px solid #124B52;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    width: 100%;
 }
 
 .card-img-top {
-  background-image: url("../img/rest.jpg");
+  background-image: url("../img/no-img.jpg");
   width: 100%;
   background-size: cover;
   text-align: center;
@@ -217,8 +218,28 @@ NAVIGATION
 }
 
 .list-group-swiper {
-    background: linear-gradient(to top left, #124B52, #096673);
+    background: #124B52;
     color: #fff;
+    border-bottom: 1px solid white;
+}
+
+.list-group-item {
+    border: none;
+    border-radius: 0;
+}
+
+.list-group-item:first-child {
+    border-radius: 0;
+}
+
+.list-group-item:last-child {
+    border-radius: 0;
+}
+
+.list-group {
+    padding: 0;
+    border-radius: 0;
+    border: none;
 }
 
 .footer {
