@@ -6,9 +6,6 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 
 ## Tasks & Goals
 ### TODOS
-* [ ] Potentially get a animation like a spinning wheel for the loading of the map
-* [ ] Allow uses to add a profile picture (not sure if I want to allow this)
-* [ ] Move forms into individual files in one folder
 * [x] ~~Re-organize the models AND forms into individual files for aesthetics and styles~~
 * [x] ~~Center login/signup buttons on the nav bar~~
 * [x] ~~Show active page on the navbar~~
@@ -20,6 +17,9 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
 * [x] ~~Force matches into all being the same size (picture, text, height, width etc) and center~~
 * [x] ~~Get user's current location and update their profile/model instance <--- IMPORTANT~~
 * [x] ~~Trigger button disable on 'get current location' feature of the update location~~
+* [ ] Potentially get a animation like a spinning wheel for the loading of the map
+* [ ] Allow uses to add a profile picture (not sure if I want to allow this)
+* [ ] Move forms into individual files in one folder
 
 ### BIG TODOS
 * [ ] **Dynamically load restaurants from surrounding area**
@@ -28,10 +28,10 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
     * [ ] Use a spatial database such as postgis to manipulate the proximity features for displaying closest locations
     * [ ] Figure out how to use the JSON return from the Google Places API to import models into the database
 * [ ] Allow group matching to help people decide on a place to eat together
-    * [x] Add group html page
-    * [x] Add group model into models
-    * [x] Update user model to have group status
-    * [x] Update views and urls for the new group model and html
+    * [x] ~~Add group html page~~
+    * [x] ~~Add group model into models~~
+    * [x] ~~Update user model to have group status~~
+    * [x] ~~Update views and urls for the new group model and html~~
     * [ ] Add form for users to create or delete a group
     * [ ] Add feature to show matches where everyone swiped on the same restaurants
     * [ ] Allow users to search for their friends
