@@ -31,6 +31,9 @@ class GroupManager(models.Manager):
         new_group = Group(user_one=user_one, user_two=user_two, user_three=user_three, user_four=user_four)
         new_group.save()
 
+    def find_friend(username):
+        return User.objects.get(username=username)
+
 class Group(models.Model):
     """
     A group is a multi-directional association between two to four users for the
