@@ -28,6 +28,13 @@ GoudaTime is the Tinder of the restaurant industry. GoudaTime allows you and you
     * [ ] Use a spatial database such as postgis to manipulate the proximity features for displaying closest locations
     * [ ] Figure out how to use the JSON return from the Google Places API to import models into the database
 * [ ] Allow group matching to help people decide on a place to eat together
+    * [x] Add group html page
+    * [x] Add group model into models
+    * [x] Update user model to have group status
+    * [x] Update views and urls for the new group model and html
+    * [ ] Add form for users to create or delete a group
+    * [ ] Add feature to show matches where everyone swiped on the same restaurants
+    * [ ] Allow users to search for their friends
 
 ---
 
