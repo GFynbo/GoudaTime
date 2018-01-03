@@ -134,6 +134,19 @@ def group(request):
     )
 
 @login_required
+def find_friend(request):
+    args = {}
+
+    if request.method == 'POST':
+        form = None
+        # if form.is_valid():
+        #     form.save(request.user)
+        #     return redirect('Profile')
+    # else:
+    #     form = UpdateProfile()
+    return redirect('Group')
+
+@login_required
 def matches(request):
     """
     View function for matches page of each user to display matched restaurants

@@ -29,7 +29,14 @@
 
 <div class="container container-full" onload="initElement();">
     <div class="row">
-        <h1>Group</h1>
+        <h1>Group - Find Friend</h1>
+        <form class="form-inline" action="/swiper/find-friend/" method="post">
+            {% csrf_token %}
+            <div class="input-group input-group-lg">
+                <input type="text" name="username" placeholder="john_doe" class="form-control">
+                <button type="submit" class="btn-swiper" value="find" name="Find">Find</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
