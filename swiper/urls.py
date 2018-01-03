@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^profile/', views.profile, name="Profile"),
     url(r'^about/', views.about, name="About"),
     url(r'^matches/', views.matches, name="Matches"),
+    url(r'^group/', views.group, name="Group"),
     url(r'^(?P<restaurant_name>\d+)/', views.add_match, name="Add Match"),
     url(r'^signup/$', views.signup, name='Signup'),
     url(r'^thank-you/$', views.thank_you, name='Thank You'),

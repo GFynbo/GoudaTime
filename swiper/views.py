@@ -124,6 +124,16 @@ def update_location(request):
     return redirect('index')
 
 @login_required
+def group(request):
+    args = {}
+
+    return render(
+        request,
+        'group.html',
+        context={},
+    )
+
+@login_required
 def matches(request):
     """
     View function for matches page of each user to display matched restaurants

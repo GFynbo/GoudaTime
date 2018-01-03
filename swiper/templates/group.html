@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block title %} Group{% endblock %}
+
+{% block nav-group %}<a href="#" class="nav-active">Group <span class="label label-danger">New</span></a>{% endblock %}
+
+{% block content %}
+
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+
+<div class="container container-full" onload="initElement();">
+    <div class="row">
+        <h1>Group</h1>
+    </div>
+</div>
+{% endblock %}
