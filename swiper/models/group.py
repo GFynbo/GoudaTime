@@ -11,29 +11,32 @@ from .profile import UserProfile
 
 class GroupManager(models.Manager):
     """
-    This is the manager class for the group/friend system for creating users and helpful
+    This is the manager class for the group/friend system for creating groups and helpful
     functions in general.
     """
-    def total_matches():
-        matches = Match.objects.all()
-        return len(matches)
+    def total_groups():
+        groups = Group.objects.all()
+        return len(groups)
 
-    def get_matches(user, deny=False):
+    def get_group(user, deny=False):
         # get matches for the match page
-        matches = Match.objects.filter(user=user, deny=deny)
-        return matches
+        if user.has_group:
+            group = Group.objects.get(user_one=user)
+            return group
+        else:
+            return None
 
-    def check_match(user, restaurant):
-        return Match.objects.filter(user=user, restaurant=restaurant)
+    def check_group(user):
+        return user.has_group
 
-    def add_match(user, restaurant, deny=False):
-        new_match = Match(user=user, restaurant=restaurant, deny=deny)
-        new_match.save()
+    def make_group(user_one, user_two, user_three, user_four):
+        new_group = Group(user_one=user_one, user_two=user_two, user_three=user_three, user_four=user_four)
+        new_group.save()
 
 class Group(models.Model):
     """
-    A match is a bi-directional association between a restaurant and user who
-    wants the association (match).
+    A group is a multi-directional association between two to four users for the
+    group functionality.
     """
     user_one = models.ForeignKey(User, related_name="group_user_one")
     user_two = models.ForeignKey(User, related_name="group_user_two")

@@ -11,6 +11,7 @@ class UserProfile(models.Model):
     location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=42.3601)
     location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-71.0589)
     address = models.CharField(max_length=125, default="Boston, MA", help_text='123 Sample St, City ST 90210')
+    has_group = models.BooleanField(default=False)
 
 
 def create_profile(sender, **kwargs):
