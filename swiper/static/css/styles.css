@@ -462,6 +462,8 @@ PROFILE
 
 .text-right {
     text-align: left;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .profile-card {
