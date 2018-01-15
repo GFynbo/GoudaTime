@@ -32,7 +32,7 @@
             <div class="card swiper-card profile-card">
                 {% bootstrap_icon "user" extra_classes="profile-icon" %}
                 <h1>{{ user.username }}<a href="#" class="small-edit-profile" data-toggle="modal" data-target="#myModal"> {% bootstrap_icon "pencil" %}</a></h1>
-                <h2>Good to see you, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!</h2>
+                <p>Good to see you, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}!</p>
                 <div class="card-body text-right">
                     <h4>First Name:  {% if user.first_name %}{{ user.first_name }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
                     <h4>Last Name: {% if user.last_name %}{{ user.last_name }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
