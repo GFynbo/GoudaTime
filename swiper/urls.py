@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^remove-restaurant/$', views.remove_restaurant, name='Remove Restaurant'),
     url(r'^update-profile/$', views.update_profile, name='Update Profile'),
     url(r'^update-location/$', views.update_location, name='Update Location'),
-    url(r'^find-friend/$', views.find_friend, name='Find Friend'),
+    url(r'^search-friend/$', views.search_friend, name='Search Friend'),
 ]

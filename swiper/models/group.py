@@ -39,7 +39,7 @@ class Group(models.Model):
     A group is a multi-directional association between two to four users for the
     group functionality.
     """
-    user_one = models.ForeignKey(User, related_name="group_user_one", required=True)
-    user_two = models.ForeignKey(User, related_name="group_user_two", required=True)
+    user_one = models.ForeignKey(User, related_name="group_user_one")
+    user_two = models.ForeignKey(User, related_name="group_user_two")
     user_three = models.ForeignKey(User, related_name="group_user_three")
     user_four = models.ForeignKey(User, related_name="group_user_four")

@@ -134,17 +134,22 @@ def group(request):
     )
 
 @login_required
-def find_friend(request):
-    args = {}
+def search_friend(request):
+    """
+    View function for searching for the friend
+    """
 
     if request.method == 'POST':
-        form = None
-        # if form.is_valid():
-        #     form.save(request.user)
-        #     return redirect('Profile')
-    # else:
-    #     form = UpdateProfile()
-    return redirect('Group')
+        pass
+    else:
+        pass
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(
+        request,
+        'group.html',
+        context={},
+    )
 
 @login_required
 def matches(request):

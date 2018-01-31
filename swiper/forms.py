@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
-from swiper.models import Match, MatchManager, Restaurant, UserProfile
+from swiper.models import Group, GroupManager, Match, MatchManager, Restaurant, UserProfile
 
 
 class SignUpForm(UserCreationForm):
@@ -100,3 +100,39 @@ class UpdateLocation(forms.ModelForm):
 
         if commit:
             user.profile.save()
+
+# forms for group stuff
+class SearchFriendForm(forms.ModelForm):
+    """
+    Alllows the user to search for a friend via username
+    """
+    user_to_search = forms.CharField(required=True, max_length=64)
+
+    class Meta:
+        model = UserProfile
+        fields = ('user_to_search',)
+
+    def search(self, user):
+        user_that_add = User.objects.get(pk=user.pk)
+        user_accept_add = User.objects.get(name=self.cleaned_data['user_to_search'])
+        if (user_accept_add):
+            return user_accept_add
+        else:
+            return False
+
+class AddGroupForm(forms.ModelForm):
+    """
+    Adds a new group to the group database with some basic checking
+    """
+    user_to_add = forms.CharField(required=True, max_length=64)
+
+    class Meta:
+        model = UserProfile
+        fields = ('user_to_add',)
+
+    def save(self, user, commit=True):
+        user_that_add = User.objects.get(pk=user.pk)
+        user_accept_add = User.objects.get(name=self.cleaned_data['user_to_add'])
+
+        if commit:
+            GroupManager.add_group(user_that_add, user_accept_add)
