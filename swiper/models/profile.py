@@ -8,6 +8,8 @@ class UserProfile(models.Model):
     Model with OneToOne field for extending the default users
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    first_name = models.CharField(max_length=50, default="")
+    last_name = models.CharField(max_length=50, default="")
     location_lat = models.DecimalField(max_digits=9, decimal_places=6, default=42.3601)
     location_lon = models.DecimalField(max_digits=9, decimal_places=6, default=-71.0589)
     address = models.CharField(max_length=125, default="Boston, MA", help_text='123 Sample St, City ST 90210')
