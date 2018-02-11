@@ -39,6 +39,7 @@
                     <h4>Last Name: {% if user.last_name %}{{ user.last_name }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
                     <h4>Email: {% if user.email %}{{ user.email }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
                     <h4>Address: {% if user.profile.address %}{{ user.profile.address }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
+                    <h4>Receive Emails?: {{ user.profile.receive_emails }}</h4>
                 </div>
             </div>
         </div>
