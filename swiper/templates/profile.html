@@ -39,7 +39,7 @@
                     <h4>Last Name: {% if user.last_name %}{{ user.last_name }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
                     <h4>Email: {% if user.email %}{{ user.email }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
                     <h4>Address: {% if user.profile.address %}{{ user.profile.address }}{% else %}<a href="#" data-toggle="modal" data-target="#myModal">Add me!</a>{% endif %}</h4>
-                    <h4>Receive Emails?: {{ user.profile.receive_emails }}</h4>
+                    <h4>Receive Emails?: {{ user.profile.receive_email }}</h4>
                 </div>
             </div>
         </div>
@@ -70,6 +70,11 @@
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon" id="sizing-addon1">Last Name</span>
                                 <input type="text" name="last_name" class="form-control" placeholder="Doe" aria-label="Username" aria-describedby="sizing-addon1" value="{% if user.last_name %}{{ user.last_name }}{% endif %}">
+                            </div>
+                            <br>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon" id="sizing-addon1">Receive Emails?</span>
+                                <input type="checkbox" name="receive_email" class="form-control" aria-label="Username" aria-describedby="sizing-addon1" value="{{ user.profile.receive_email }}">
                             </div>
                             <br>
                         </div>
