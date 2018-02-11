@@ -66,19 +66,22 @@ class UpdateProfile(forms.ModelForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=False, max_length=50)
     last_name = forms.CharField(required=False, max_length=50)
+    receive_email = forms.CheckboxInput()
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name')
+        fields = ('email', 'first_name', 'last_name', 'receive_email')
 
     def save(self, user, commit=True):
         user = User.objects.get(pk=user.pk)
         user.email = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
+        user.profile.receive_email = self.cleaned_data['receive_email']
 
         if commit:
             user.save()
+            user.profile.save()
 
 class UpdateLocation(forms.ModelForm):
     """
