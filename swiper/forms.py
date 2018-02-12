@@ -66,11 +66,11 @@ class UpdateProfile(forms.ModelForm):
     email = forms.EmailField(required=True)
     first_name = forms.CharField(required=False, max_length=50)
     last_name = forms.CharField(required=False, max_length=50)
-    receive_email = forms.CheckboxInput()
+    receive_email = forms.BooleanField()
 
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'receive_email')
+        fields = ('email', 'first_name', 'last_name', 'receive_email',)
 
     def save(self, user, commit=True):
         user = User.objects.get(pk=user.pk)
