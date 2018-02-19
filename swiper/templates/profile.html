@@ -64,17 +64,17 @@
                             <br>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon" id="sizing-addon1">First Name</span>
-                                <input type="text" name="first_name" class="form-control" placeholder="John" aria-label="Username" aria-describedby="sizing-addon1" value="{% if user.first_name %}{{ user.first_name }}{% endif %}">
+                                <input type="text" name="first_name" class="form-control" placeholder="John" aria-label="First Name" aria-describedby="sizing-addon1" value="{% if user.first_name %}{{ user.first_name }}{% endif %}">
                             </div>
                             <br>
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon" id="sizing-addon1">Last Name</span>
-                                <input type="text" name="last_name" class="form-control" placeholder="Doe" aria-label="Username" aria-describedby="sizing-addon1" value="{% if user.last_name %}{{ user.last_name }}{% endif %}">
+                                <input type="text" name="last_name" class="form-control" placeholder="Doe" aria-label="Last Name" aria-describedby="sizing-addon1" value="{% if user.last_name %}{{ user.last_name }}{% endif %}">
                             </div>
                             <br>
                             <div class="input-group input-group-lg">
                                 <span class="input-group" id="">Receive Emails?</span>
-                                <input type="checkbox" name="receive_email" class="form-control" aria-label="Username" value="{{ user.profile.receive_email }}">
+                                <input type="checkbox" name="receive_email" class="input-group" value="{{ user.profile.receive_email }}">
                             </div>
                             <br>
                         </div>
